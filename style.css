@@ -1,0 +1,100 @@
+/*komentaar*/
+h1 {
+    font-variant: small-caps;
+    font-size: xx-large;
+    color: black; /*teksti värv*/
+    background-color: transparent;/*tausta värv*/
+}
+header{
+    padding: 5%;
+    background-color: pink;
+    border-left: 3px solid black;
+    border-bottom: 3px dotted black;
+    border-radius: 0 0 0 60px;
+    background-image: url(Lill.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+footer{
+    padding: 5%;
+    background-color: pink;
+    border-left: 3px solid black;
+    border-top: 3px dotted black;
+    border-radius: 60px 0 0 0;
+}
+section#Osa1, img{
+    padding: 5%;
+    border: 1px solid black;  /*võib kasutada - dotted, dashed, double, outline, groove*/
+    margin: 5px;
+    width: 25%;
+    /*(osa3, osa4, osa5)
+    kirjuta iga section oma kujundusega
+    mis kasutab erinevaid ääriseid värvi,
+    raam võiks olla ühelt poolt jne
+     */
+}
+section#Osa2, img {
+    padding: 5%;
+    border: 1px solid darkred;
+    margin: 5px;
+    width: 15%;
+}
+/*Osa3*/
+section#Osa3 {
+    padding: 5%;
+    border: 4px double dimgray;
+    margin: 25px;
+    background-color: peachpuff;
+}
+section#Osa4 {
+    padding: 10%;
+    border-bottom: 6px dashed dimgray;
+    border-left: 3px solid black;
+    margin: 10px;
+    background-color: mintcream;
+}
+
+section#Osa5 {
+    padding: 5%;
+    border-top: 5px groove dimgray;
+    border-right: 6px dotted darkred;
+    margin: 6px;
+    width: 40%;
+    background-color: lavender;
+}
+
+img{
+    width: 65%;
+    height: auto;
+}
+
+
+/*navigeerimis nenüü*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: lightpink;
+}
+
+ul li {
+    float: left;
+}
+
+ul li a {
+    display: block;
+    color: black;
+    text-decoration: none; /*link on  alljoonita */
+    text-align: center; /* teksti joondamine keskel*/
+    padding: 20px;
+    border-left: 3px solid black;
+    border-radius: 50%;
+}
+nav {
+    padding: 5%;
+    margin-bottom: 5px;
+}
+
+nav ul li a:hover {
+    background-color: lightpink;
+}
