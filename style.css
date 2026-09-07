@@ -62,10 +62,36 @@ section#Osa5 {
     width: 40%;
     background-color: lavender;
 }
+section#Osa6 {
+    padding: 5%;
+    margin: 15px;
+    background-color: lavender;
+    border: 12px ridge dimgray;
+    border-radius: 25px;
+}
+#video iframe {
+    max-width: 100%;
+    border: 3px solid black;
+    border-radius: 10px;
+}
 
-img{
-    width: 65%;
-    height: auto;
+
+#muusika {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+#kaart {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+img#erapilt{
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid black;
 }
 
 
