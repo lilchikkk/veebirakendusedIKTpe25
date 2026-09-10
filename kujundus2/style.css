@@ -1,0 +1,250 @@
+/* Üldine kujundus */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #15151b;
+    color: #eeeeee;
+}
+
+
+/* Vasak menüü */
+
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 190px;
+    height: 100vh;
+
+    background-color: #202027;
+
+    padding: 25px 15px;
+
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 12px;
+}
+
+nav a {
+    display: block;
+
+    padding: 13px 15px;
+
+    background-color: #2b2b35;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #7355b8;
+}
+
+
+/* Päis */
+
+header {
+    margin-left: 190px;
+
+    padding: 55px 8%;
+
+    background-color: #24242d;
+
+    border-bottom: 2px solid #7355b8;
+}
+
+h1 {
+    margin: 0;
+
+    font-size: 36px;
+
+    color: white;
+}
+
+
+/* Sisu */
+
+main {
+    margin-left: 190px;
+
+    padding: 35px 8%;
+}
+
+
+/* Sektsioonid */
+
+section {
+    background-color: #22222a;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+
+    border-radius: 10px;
+
+    border: 1px solid #363640;
+}
+
+section:hover {
+    border-color: #7355b8;
+}
+
+
+/* Pealkirjad */
+
+h2 {
+    margin-top: 0;
+
+    color: #b99cff;
+
+    font-size: 24px;
+}
+
+
+/* Tekst */
+
+p {
+    color: #c9c9cf;
+}
+
+
+/* Lingid */
+
+section a {
+    display: inline-block;
+
+    padding: 10px 16px;
+
+    margin: 5px;
+
+    background-color: #7355b8;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    transition: 0.3s;
+}
+
+section a:hover {
+    background-color: #8969d0;
+}
+
+
+/* Pildid */
+
+img {
+    max-width: 100%;
+
+    border-radius: 10px;
+}
+
+img#erapilt {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 3px solid #7355b8;
+}
+
+
+/* Video */
+
+#video iframe {
+    max-width: 100%;
+
+    border: none;
+
+    border-radius: 10px;
+}
+
+
+/* Muusika ja kaart */
+
+#muusika,
+#kaart {
+    margin-top: 20px;
+}
+
+
+/* Jalus */
+
+footer {
+    margin-left: 190px;
+
+    padding: 25px;
+
+    background-color: #202027;
+
+    color: #9999a3;
+
+    text-align: center;
+}
+
+
+/* Telefon */
+
+@media (max-width: 700px) {
+
+    nav {
+        position: static;
+
+        width: 100%;
+        height: auto;
+
+        padding: 15px;
+    }
+
+    nav ul {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+    nav li {
+        margin: 0;
+    }
+
+    nav a {
+        padding: 10px 12px;
+    }
+
+    header,
+    main,
+    footer {
+        margin-left: 0;
+    }
+
+    header {
+        padding: 40px 6%;
+    }
+
+    main {
+        padding: 25px 5%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
