@@ -1,10 +1,37 @@
-/* Üldine kujundus */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #100E14;
+    --panel: #1A1620;
+    --panel-alt: #1F1926;
+    --ink: #F2EEF7;
+    --muted: #9C93AC;
+    --line: #3A3145;
+    --accent: #9D5CFF;
+    --accent-soft: rgba(157, 92, 255, 0.35);
+    --accent2: #E056FD;
+}
+
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #15151b;
-    color: #eeeeee;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--ink);
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body { animation: none; }
+    * { transition: none !important; }
 }
 
 
@@ -18,9 +45,10 @@ nav {
     width: 190px;
     height: 100vh;
 
-    background-color: #202027;
+    background-color: var(--bg);
+    border-right: 1px solid var(--line);
 
-    padding: 25px 15px;
+    padding: 40px 0;
 
     box-sizing: border-box;
 }
@@ -32,26 +60,44 @@ nav ul {
 }
 
 nav li {
-    margin-bottom: 12px;
+    margin-bottom: 4px;
 }
 
 nav a {
+    position: relative;
     display: block;
 
-    padding: 13px 15px;
+    padding: 10px 30px;
 
-    background-color: #2b2b35;
-    color: white;
-
+    color: var(--muted);
     text-decoration: none;
 
-    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
 
-    transition: 0.3s;
+    transition: color 0.25s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 30px;
+    bottom: 6px;
+
+    width: 0;
+    height: 1px;
+
+    background-color: var(--accent);
+
+    transition: width 0.25s ease;
 }
 
 nav a:hover {
-    background-color: #7355b8;
+    color: var(--ink);
+}
+
+nav a:hover::after {
+    width: calc(100% - 60px);
 }
 
 
@@ -60,19 +106,23 @@ nav a:hover {
 header {
     margin-left: 190px;
 
-    padding: 55px 8%;
+    padding: 80px 8% 50px;
 
-    background-color: #24242d;
-
-    border-bottom: 2px solid #7355b8;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--line);
 }
 
 h1 {
     margin: 0;
 
-    font-size: 36px;
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 46px;
+    line-height: 1.15;
 
-    color: white;
+    color: var(--ink);
 }
 
 
@@ -81,26 +131,37 @@ h1 {
 main {
     margin-left: 190px;
 
-    padding: 35px 8%;
+    padding: 50px 8% 20px;
 }
 
 
-/* Sektsioonid */
+/* Sektsioonid — vahelduv stiil, aga sama värvipere */
 
 section {
-    background-color: #22222a;
+    background-color: var(--panel);
 
-    padding: 25px;
+    padding: 32px;
 
-    margin-bottom: 25px;
+    margin-bottom: 28px;
 
-    border-radius: 10px;
+    border-radius: 16px;
 
-    border: 1px solid #363640;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+section:nth-of-type(odd) {
+    border: 1px dashed var(--line);
+}
+
+section:nth-of-type(even) {
+    background-color: var(--panel-alt);
+    border: 1px solid var(--accent-soft);
 }
 
 section:hover {
-    border-color: #7355b8;
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 32px rgba(157, 92, 255, 0.14);
 }
 
 
@@ -108,42 +169,56 @@ section:hover {
 
 h2 {
     margin-top: 0;
+    margin-bottom: 14px;
 
-    color: #b99cff;
-
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
     font-size: 24px;
+
+    color: var(--ink);
 }
 
 
 /* Tekst */
 
 p {
-    color: #c9c9cf;
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 15.5px;
 }
 
 
-/* Lingid */
+/* Lingid — laotud ilusti laiali, mitte tihedalt üksteise otsa */
+
+section div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 10px;
+}
 
 section a {
     display: inline-block;
 
-    padding: 10px 16px;
+    padding: 11px 22px;
 
-    margin: 5px;
-
-    background-color: #7355b8;
-
-    color: white;
+    background-color: var(--accent);
+    color: #FFFFFF;
 
     text-decoration: none;
+    font-weight: 500;
+    font-size: 14.5px;
 
-    border-radius: 7px;
+    border-radius: 999px;
 
-    transition: 0.3s;
+    transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
 section a:hover {
-    background-color: #8969d0;
+    background-color: var(--accent2);
+    transform: translateY(-1px);
 }
 
 
@@ -152,7 +227,8 @@ section a:hover {
 img {
     max-width: 100%;
 
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 img#erapilt {
@@ -163,7 +239,8 @@ img#erapilt {
 
     border-radius: 50%;
 
-    border: 3px solid #7355b8;
+    border: 3px solid var(--accent);
+    box-shadow: none;
 }
 
 
@@ -173,8 +250,7 @@ img#erapilt {
     max-width: 100%;
 
     border: none;
-
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 
@@ -191,11 +267,13 @@ img#erapilt {
 footer {
     margin-left: 190px;
 
-    padding: 25px;
+    padding: 30px 8%;
 
-    background-color: #202027;
+    background-color: var(--bg);
+    border-top: 1px solid var(--line);
 
-    color: #9999a3;
+    color: var(--muted);
+    font-size: 13.5px;
 
     text-align: center;
 }
@@ -211,7 +289,9 @@ footer {
         width: 100%;
         height: auto;
 
-        padding: 15px;
+        padding: 20px 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
     }
 
     nav ul {
@@ -219,7 +299,9 @@ footer {
 
         flex-wrap: wrap;
 
-        gap: 8px;
+        gap: 4px;
+
+        padding: 0 5%;
     }
 
     nav li {
@@ -227,7 +309,11 @@ footer {
     }
 
     nav a {
-        padding: 10px 12px;
+        padding: 8px 14px;
+    }
+
+    nav a::after {
+        left: 14px;
     }
 
     header,
@@ -237,14 +323,14 @@ footer {
     }
 
     header {
-        padding: 40px 6%;
-    }
-
-    main {
-        padding: 25px 5%;
+        padding: 50px 6% 35px;
     }
 
     h1 {
-        font-size: 28px;
+        font-size: 32px;
+    }
+
+    main {
+        padding: 30px 5% 10px;
     }
 }
