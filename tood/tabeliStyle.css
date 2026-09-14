@@ -31,5 +31,62 @@ table#roheline td{
     text-align: center;
 }
 
+/*pseudoelementide kasutamine*/
+
+/* 1 rida ja 1 lahter*/
+#sinine tr:nth-child(1) td:nth-child(1){
+    background-color: red;
+}
+
+/* 1 rida ja 2 lahter*/
+#sinine tr:nth-child(1) td:nth-child(2){
+    background-color: yellow;
+}
+
+/* 2 rida*/
+#sinine tr:nth-child(2){
+    background-color: grey;
+}
+
+/* Hard table */
+#pink {
+    border: 1px solid black;
+}
+
+#pink tr:nth-child(1) td:nth-child(1) {
+    background-color: green;
+}
+
+#pink tr:nth-child(1) td:nth-child(2) {
+    background-color: yellow;
+}
+
+#pink tr:nth-child(2) td:nth-child(1) {
+    background-color: red;
+}
+
+#pink tr:nth-child(2) td:nth-child(2) {
+    background-color: red;
+}
+
+#pink tr:nth-child(3) td:nth-child(1) {
+    background-color: blue;
+}
+
+#pink tr:nth-child(3) td:nth-child(2) {
+    background-color: blue;
+}
+
+#pink tr:nth-child(3) td:nth-child(3) {
+    background-color: lightgreen;
+}
+
+#pink tr:nth-child(4) td:nth-child(1) {
+    background-color: purple;
+}
+
+#pink tr:nth-child(4) td:nth-child(2) {
+    background-color: purple;
+}
 
 
