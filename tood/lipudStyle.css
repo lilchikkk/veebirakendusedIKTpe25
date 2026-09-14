@@ -1,9 +1,18 @@
+h1#lipud{
+    position: absolute;
+    top: 15px;
+    left: 500px
+}
+
 #eesti{
     width: 330px;
     height: 210px;
     border: 1px solid grey;
     border-spacing: 0;
     /*border-collapse: collapse;*/
+    position: absolute;
+    top: 80px;
+    left: 500px
 }
 #eesti tr:nth-child(1){
     background-color: blue;
@@ -12,5 +21,88 @@
     background-color: black;
 }
 #eesti tr:nth-child(3){
+    background-color: white;
+}
+
+#rootsi{
+    width: 330px;
+    height: 210px;
+    border: 1px solid grey;
+    border-spacing: 0;
+    /*border-collapse: collapse;*/
+    position: absolute;
+    top: 320px;
+    left: 500px
+}
+
+#rootsi tr:nth-child(2){ /*2 rida*/
+    background-color: gold;
+    height: 50px;
+}
+#rootsi tr:nth-child(1) td:nth-child(1),
+#rootsi tr:nth-child(3) td:nth-child(1){
+    background-color: blue;
+    width: 100px;
+}
+#rootsi tr:nth-child(1) td:nth-child(3),
+#rootsi tr:nth-child(3) td:nth-child(3){
+    background-color: blue;
+    width: 175px;
+}
+#rootsi tr:nth-child(1) td:nth-child(2),
+#rootsi tr:nth-child(3) td:nth-child(2){
+    background-color: gold;
+}
+
+#prantsusmaa{
+    width: 330px;
+    height: 210px;
+    border: 1px solid grey;
+    border-spacing: 0;
+    /*border-collapse: collapse;*/
+    position: absolute;
+    top: 570px;
+    left: 500px;
+}
+
+#prantsusmaa tr td:nth-child(1){
+    background-color: #070783;
+    width: 33%;
+}
+
+#prantsusmaa tr td:nth-child(2){
+    background-color: white;
+    width: 33%;
+}
+
+#prantsusmaa tr td:nth-child(3){
+    background-color: #b20000;
+    width: 33%;
+}
+
+
+#sveits {
+    width: 250px;
+    height: 250px;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    position: absolute;
+    top: 830px;
+    left: 525px;
+    background-color: red;
+}
+
+
+#sveits tr:nth-child(2) td:nth-child(3) {
+    background-color: white;
+}
+
+#sveits tr:nth-child(3) td:nth-child(2),
+#sveits tr:nth-child(3) td:nth-child(3),
+#sveits tr:nth-child(3) td:nth-child(4) {
+    background-color: white;
+}
+
+#sveits tr:nth-child(4) td:nth-child(3) {
     background-color: white;
 }
