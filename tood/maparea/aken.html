@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Map area kasutamine</title>
+    <link rel="stylesheet" href="mapStyle.css"/>
+</head>
+<body>
+<h1>Lehel on kasutatud map area käsud</h1>
+<h2>palun kliki hiirega pildi erineva alale pildil</h2>
+<img src="maja.png" alt="ilus majake" usemap="#majakaart">
+<!--kasutame map'i (kaart) -->
+<map name="majakaart">
+    <!--ring circle-->
+    <area shape="circle" coords="149,162,50" href="aken.html" alt="aken">
+    <!--tistkülik rect coords x, y, x1, y2-->
+    <area shape="rect" coords="196,36, 222,, 79" href="korsten.html" alt="hall korsten">
+    <!--poly- mitu nurga polügon coords x, y, x1, y1, x2, y2-->
+    <area shape="poly" coords="62,90, 123,4,225,88" href="katus.html" alt="katus">
+</map>
+
+<div id="selgitus">
+    Aken on hoone, sõiduki või muu objekti seinas, katuses või ukses paiknev ava,
+    mis tavaliselt võimaldab lasta sisse valgust ja õhku.
+</div>
+
+</body>
+</html>
