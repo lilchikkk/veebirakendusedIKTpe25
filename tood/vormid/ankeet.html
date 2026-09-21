@@ -104,12 +104,68 @@
             </td>
         </tr>
         <tr>
-
+            <!-- USERNAME -->
             <td>
                 <label for="username">Username:</label><br>
             </td>
             <td>
                 <input type="text" id="username" name="username">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="pwd">Parool:</label><br>
+            </td>
+            <td>
+                <input type="password" id="pwd" name="pwd">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h2>Vajuta siia</h2>
+            </td>
+            <td>
+                <input type="button" onclick="alert('See on nupp')" value="Click Me!">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="birthdaytime">Sinu sünnipäev (data ja aeg):</label>
+            </td>
+            <td>
+                <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="email">Palun kirjuta siia oma e-posti adress:</label>
+            </td>
+            <td>
+                <input type="email" id="email" name="email">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="myfile">Vajuta fail:</label>
+            </td>
+            <td>
+                <input type="file" id="myfile" name="myfile">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="phone">Kirjuta oma telefoninumber:</label>
+            </td>
+            <td>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="appt">Select a time:</label>
+            </td>
+            <td>
+                <input type="time" id="appt" name="appt">
             </td>
         </tr>
     </table>
