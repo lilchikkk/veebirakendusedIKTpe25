@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Vormid ja nupud HTML keeles</title>
+</head>
+<body>
+<h1>Sportlase ankeet</h1>
+<form action="#">
+    <table>
+        <tr>
+            <td>
+                <label for="nimi">Sisesta oma nimi:</label>
+            </td>
+            <td>
+                <input type="text" id="nimi" name="nimi">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Vali sugu:</strong>
+            </td>
+            <td>
+                <!-- radionupp - ainult üks valik on õige -->
+                <input type="radio" name="sugu" id="naine" value="naine">
+                <label for="naine">naine</label>
+                <br>
+                <input type="radio" name="sugu" id="mees" value="mees">
+                <label for="mees">mees</label>
+                <br>
+                <input type="radio" name="sugu" id="muu" value="muu">
+                <label for="muu">muu</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Spordialad</strong>
+            </td>
+            <td>
+                <fieldset>
+                    <legend>Spordialad:</legend>
+
+                    <strong>Spordialad</strong>
+                    <br>
+
+                    <input type="checkbox" name="spordiala" id="jooksmine" value="jooksmine">
+                    <label for="jooksmine">jooksmine</label>
+                    <br>
+
+                    <input type="checkbox" name="spordiala" id="ujumine" value="ujumine">
+                    <label for="ujumine">ujumine</label>
+                    <br>
+
+                    <input type="checkbox" name="spordiala" id="suusatamine" value="suusatamine">
+                    <label for="suusatamine">suusatamine</label>
+                    <br>
+
+                    <input type="checkbox" name="spordiala" id="uisutamine" value="uisutamine">
+                    <label for="uisutamine">uisutamine</label>
+                    <br>
+
+                    <input type="checkbox" name="spordiala" id="poks" value="poks">
+                    <label for="poks">poks</label>
+                    <br>
+                </fieldset>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="tund">Mitu tundi nädalas sina trennid?</label>
+            </td>
+            <td>
+                <input type="number" min="1" max="24" step="1" value="6" id="tund" name="tund">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="klubi">Mis klubi sa külastad?</label>
+            </td>
+            <td>
+                <select name="klubi" id="klubi">
+                    <option value="vali">vali...</option>
+                    <option value="gym">GYM</option>
+                    <option value="myfitnes">MyFitnes</option>
+                    <option value="gym24">Gym24</option>
+                    <option value="kalevspa">KalevSpa</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="varv">Mis värvi tossud sul on?</label>
+            </td>
+            <td>
+                <input type="color" id="varv">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="kuupaev">Millal oli su viimane trenn?</label>
+            </td>
+            <td>
+                <input type="date" id="kuupaev" min="2026-12-31">
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <label for="username">Username:</label><br>
+            </td>
+            <td>
+                <input type="text" id="username" name="username">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
