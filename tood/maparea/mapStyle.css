@@ -1,40 +1,91 @@
-.map-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+body {
+    margin: 0;
+    padding: 30px 15px 50px 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+    background-color: #e6f5ec;
+    color: #3a2c1a;
     text-align: center;
 }
 
+h1 {
+    color: #5b3a1e;
+    margin: 5px 0 2px 0;
+    font-size: 1.7em;
+}
+
+h2 {
+    color: #6a4a2a;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
 img {
-    border-radius: 25px;
-    border: 8px solid #8B5E3C;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    max-width: 100%;
+    border-radius: 15px;
+    border: 6px solid #8B5E3C;
+    max-width: 90%;
+    float: left;
+    margin: 0 25px 20px 30px;
+}
+
+area {
+    cursor: pointer;
 }
 
 div#selgitus {
-    background-color: #fdf6e3;
-    width: 50%;
-    max-width: 500px;
-    margin: 30px auto 0 auto;
-    padding: 20px 25px;
-    border-radius: 15px;
-    border: 3px solid #8B5E3C;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fffdf6;
+    width: 300px;
+    max-width: 80%;
+    margin: 0 0 20px 0;
+    padding: 18px 22px;
+    border-radius: 12px;
+    border: 2px solid #8B5E3C;
     font-family: Georgia, serif;
+    text-align: left;
+    display: inline-block;
 }
 
 div#selgitus h2 {
     margin-top: 0;
     color: #8B5E3C;
     border-bottom: 2px solid #8B5E3C;
-    padding-bottom: 8px;
-    font-size: 1.4em;
+    padding-bottom: 6px;
+    font-size: 1.3em;
+    text-align: left;
 }
 
 div#selgitus p {
-    margin: 0;
-    line-height: 1.6;
+    margin: 0 0 10px 0;
+    line-height: 1.5;
     color: #333;
     text-align: left;
+}
+
+div#selgitus img {
+    float: none;
+    margin: 10px 0 0 0;
+    border-width: 3px;
+    max-width: 100%;
+    display: block;
+}
+
+/* кнопка "На главную" внизу страницы */
+body > p:last-of-type {
+    clear: both;
+    text-align: center;
+    margin-top: 25px;
+}
+
+body > p:last-of-type a {
+    display: inline-block;
+    background-color: #8B5E3C;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 8px;
+}
+
+body > p:last-of-type a:hover {
+    background-color: #6d4a2c;
 }
