@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Vormid ja nupud HTML keeles</title>
+    <script src="../js//ankeetScript.js"></script>
 </head>
 <body>
 <h1>Sportlase ankeet</h1>
@@ -13,7 +14,10 @@
                 <label for="nimi">Sisesta oma nimi:</label>
             </td>
             <td>
-                <input type="text" id="nimi" name="nimi">
+                <input type="text" id="nimi" name="nimi" oninput="nimiLugemine()">
+            </td>
+            <td>
+                <div id="vastus"></div>
             </td>
         </tr>
         <tr>
@@ -22,14 +26,17 @@
             </td>
             <td>
                 <!-- radionupp - ainult üks valik on õige -->
-                <input type="radio" name="sugu" id="naine" value="naine">
+                <input type="radio" name="sugu" id="naine"  value="naine" onclick="suguValik()">
                 <label for="naine">naine</label>
                 <br>
-                <input type="radio" name="sugu" id="mees" value="mees">
+                <input type="radio" name="sugu" id="mees"  value="mees" onclick="suguValik()">
                 <label for="mees">mees</label>
                 <br>
-                <input type="radio" name="sugu" id="muu" value="muu">
+                <input type="radio" name="sugu" id="muu"  value="muu" onclick="suguValik()">
                 <label for="muu">muu</label>
+            </td>
+            <td>
+                <div id="vastus2"></div>
             </td>
         </tr>
         <tr>
@@ -43,28 +50,34 @@
                     <strong>Spordialad</strong>
                     <br>
 
-                    <input type="checkbox" name="spordiala" id="jooksmine" value="jooksmine">
+                    <input type="checkbox" name="spordiala" id="jooksmine" value="jooksmine" onchange="sportValik()">
                     <label for="jooksmine">jooksmine</label>
                     <br>
 
-                    <input type="checkbox" name="spordiala" id="ujumine" value="ujumine">
+                    <input type="checkbox" name="spordiala" id="ujumine" value="ujumine"onchange="sportValik()">
                     <label for="ujumine">ujumine</label>
                     <br>
 
-                    <input type="checkbox" name="spordiala" id="suusatamine" value="suusatamine">
+                    <input type="checkbox" name="spordiala" id="suusatamine" value="suusatamine"onchange="sportValik()">
                     <label for="suusatamine">suusatamine</label>
                     <br>
 
-                    <input type="checkbox" name="spordiala" id="uisutamine" value="uisutamine">
+                    <input type="checkbox" name="spordiala" id="uisutamine" value="uisutamine"onchange="sportValik()">
                     <label for="uisutamine">uisutamine</label>
                     <br>
 
-                    <input type="checkbox" name="spordiala" id="poks" value="poks">
+                    <input type="checkbox" name="spordiala" id="poks" value="poks"onchange="sportValik()">
                     <label for="poks">poks</label>
                     <br>
+
                 </fieldset>
+
+            </td>
+            <td>
+                <div id="vastus3"></div>
             </td>
         </tr>
+
         <tr>
             <td>
                 <label for="tund">Mitu tundi nädalas sina trennid?</label>
@@ -122,14 +135,6 @@
         </tr>
         <tr>
             <td>
-                <h2>Vajuta siia</h2>
-            </td>
-            <td>
-                <input type="button" onclick="alert('See on nupp')" value="Click Me!">
-            </td>
-        </tr>
-        <tr>
-            <td>
                 <label for="birthdaytime">Sinu sünnipäev (data ja aeg):</label>
             </td>
             <td>
@@ -166,6 +171,17 @@
             </td>
             <td>
                 <input type="time" id="appt" name="appt">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="reset" value="Puhasta" onclick="puhasta()">
+            </td>
+            <td>
+                <input type="button" value="Näita andmed" onclick="tervitus()">
+            </td>
+            <td>
+                <div id="vastus4"></div>
             </td>
         </tr>
     </table>
