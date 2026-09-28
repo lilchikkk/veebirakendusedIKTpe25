@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>Muusika küsitlus</title>
+  <script src="muusikaScript.js"></script>
+</head>
+<body>
+<h1>Muusika küsimustik</h1>
+<form action="#" id="vorm">
+  <table border="1">
+    <!-- 1. Muusikud (checkbox) -->
+    <tr>
+      <td>
+        <fieldset>
+          <legend><strong>Milliseid muusikuid/ansambleid sa tead?</strong></legend>
+          <input type="checkbox" id="m1" value="Trad.Attack!" onchange="muusikudValik()">
+          <label for="m1">Trad.Attack!</label>
+          <br>
+          <input type="checkbox" id="m2" value="5MIINUST" onchange="muusikudValik()">
+          <label for="m2">5MIINUST</label>
+          <br>
+          <input type="checkbox" id="m3" value="Metallica" onchange="muusikudValik()">
+          <label for="m3">Metallica</label>
+        </fieldset>
+      </td>
+      <td>
+        <div id="vastus1"></div>
+      </td>
+    </tr>
+
+    <!-- 2. Arvamus (textarea) -->
+    <tr>
+      <td>
+        <label for="arvamus"><strong>Mida arvad muusika kuulamisest koolis?</strong></label>
+        <br>
+        <textarea id="arvamus" rows="4" cols="30" placeholder="Kirjuta oma arvamus..." oninput="arvamusLugemine()"></textarea>
+      </td>
+      <td>
+        <div id="vastus2"></div>
+      </td>
+    </tr>
+
+    <!-- 3. Tunnid (number) -->
+    <tr>
+      <td>
+        <label for="tund"><strong>Mitu tundi päevas sa kuulad muusikat?</strong></label>
+        <br>
+        <input type="number" id="tund" min="0" max="24" step="1" oninput="tunnidLugemine()">
+      </td>
+      <td>
+        <div id="vastus3"></div>
+      </td>
+    </tr>
+
+    <!-- 4. Raadio (radio jah/ei) -->
+    <tr>
+      <td>
+        <fieldset>
+          <legend><strong>Kas sa kuulad raadiot?</strong></legend>
+          <input type="radio" name="raadio" id="raadioJah" value="jah" onclick="raadioValik()">
+          <label for="raadioJah">Jah</label>
+          <input type="radio" name="raadio" id="raadioEi" value="ei" onclick="raadioValik()">
+          <label for="raadioEi">Ei</label>
+        </fieldset>
+      </td>
+      <td>
+        <div id="vastus4"></div>
+      </td>
+    </tr>
+
+    <!-- 5. Raadiojaamad (text) -->
+    <tr>
+      <td>
+        <label for="jaamad"><strong>Milliseid raadiojaamu oskad nimetada?</strong></label>
+        <br>
+        <input type="text" id="jaamad" oninput="jaamadLugemine()">
+      </td>
+      <td>
+        <div id="vastus5"></div>
+      </td>
+    </tr>
+
+    <!-- 6. Stiil (select) -->
+    <tr>
+      <td>
+        <label for="stiil"><strong>Millist muusikat sa kõige rohkem kuulad?</strong></label>
+        <br>
+        <select id="stiil" onchange="stiilValik()">
+          <option value="">vali...</option>
+          <option value="pop">pop</option>
+          <option value="rock">rock</option>
+          <option value="hip-hop">hip-hop</option>
+          <option value="klassikaline">klassikaline</option>
+          <option value="jazz">jazz</option>
+          <option value="elektrooniline">elektrooniline</option>
+        </select>
+      </td>
+      <td>
+        <div id="vastus6"></div>
+      </td>
+    </tr>
+
+    <!-- 7. ja 8. Nupud -->
+    <tr>
+      <td>
+        <input type="button" value="Saada" onclick="saada()">
+        <input type="button" value="Puhasta" onclick="puhasta()">
+      </td>
+      <td>
+        <div id="kokkuvote"></div>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
