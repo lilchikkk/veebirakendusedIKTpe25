@@ -2,110 +2,103 @@
 <html lang="et">
 <head>
   <meta charset="UTF-8">
-  <title>Muusika küsitlus</title>
-  <script src="muusikaScript.js"></script>
+  <title>Muusika ankeet</title>
+  <link rel="stylesheet" href="vormid/muusikaStyle.css">
+  <script src="js/muusikaScript.js"></script>
 </head>
 <body>
-<h1>Muusika küsimustik</h1>
-<form action="#" id="vorm">
-  <table border="1">
-    <!-- 1. Muusikud (checkbox) -->
+<h1>Muusika ankeet</h1>
+<form action="#">
+  <table>
     <tr>
+      <th>Küsimused</th>
+      <th>Vastused</th>
+    </tr>
+
+    <!-- 1. checkbox -->
+    <tr>
+      <td><strong>1. Milliseid muusikuid/ansambleid sa tead?</strong></td>
       <td>
-        <fieldset>
-          <legend><strong>Milliseid muusikuid/ansambleid sa tead?</strong></legend>
-          <input type="checkbox" id="m1" value="Trad.Attack!" onchange="muusikudValik()">
-          <label for="m1">Trad.Attack!</label>
-          <br>
-          <input type="checkbox" id="m2" value="5MIINUST" onchange="muusikudValik()">
-          <label for="m2">5MIINUST</label>
-          <br>
-          <input type="checkbox" id="m3" value="Metallica" onchange="muusikudValik()">
-          <label for="m3">Metallica</label>
-        </fieldset>
-      </td>
-      <td>
-        <div id="vastus1"></div>
+        <input type="checkbox" name="muusik" id="metallica" value="Metallica" onchange="muusikudValik()">
+        <label for="metallica">Metallica</label><br>
+
+        <input type="checkbox" name="muusik" id="queen" value="Queen" onchange="muusikudValik()">
+        <label for="queen">Queen</label><br>
+
+        <input type="checkbox" name="muusik" id="abba" value="ABBA" onchange="muusikudValik()">
+        <label for="abba">ABBA</label><br>
+
+        <input type="checkbox" name="muusik" id="eminem" value="Eminem" onchange="muusikudValik()">
+        <label for="eminem">Eminem</label><br>
+
+        <input type="checkbox" name="muusik" id="tuuli" value="Tuuli" onchange="muusikudValik()">
+        <label for="tuuli">Tuuli</label>
+
+        <div id="vastus1" class="tulemus"></div>
       </td>
     </tr>
 
-    <!-- 2. Arvamus (textarea) -->
+    <!-- 2. textarea -->
     <tr>
+      <td><strong>2. Mida arvad muusika kuulamisest koolis?</strong></td>
       <td>
-        <label for="arvamus"><strong>Mida arvad muusika kuulamisest koolis?</strong></label>
-        <br>
-        <textarea id="arvamus" rows="4" cols="30" placeholder="Kirjuta oma arvamus..." oninput="arvamusLugemine()"></textarea>
-      </td>
-      <td>
-        <div id="vastus2"></div>
+        <textarea id="arvamus" name="arvamus" rows="4" cols="40" oninput="arvamusLugemine()"></textarea>
+        <div id="vastus2" class="tulemus"></div>
       </td>
     </tr>
 
-    <!-- 3. Tunnid (number) -->
+    <!-- 3. number -->
     <tr>
+      <td><strong>3. Mitu tundi päevas sa kuulad muusikat?</strong></td>
       <td>
-        <label for="tund"><strong>Mitu tundi päevas sa kuulad muusikat?</strong></label>
-        <br>
-        <input type="number" id="tund" min="0" max="24" step="1" oninput="tunnidLugemine()">
-      </td>
-      <td>
-        <div id="vastus3"></div>
+        <input type="number" min="0" max="24" step="1" id="tunnid" name="tunnid" oninput="tunnidLugemine()">
+        <div id="vastus3" class="tulemus"></div>
       </td>
     </tr>
 
-    <!-- 4. Raadio (radio jah/ei) -->
+    <!-- 4. radio jah/ei -->
     <tr>
+      <td><strong>4. Kas sa kuulad raadiot?</strong></td>
       <td>
-        <fieldset>
-          <legend><strong>Kas sa kuulad raadiot?</strong></legend>
-          <input type="radio" name="raadio" id="raadioJah" value="jah" onclick="raadioValik()">
-          <label for="raadioJah">Jah</label>
-          <input type="radio" name="raadio" id="raadioEi" value="ei" onclick="raadioValik()">
-          <label for="raadioEi">Ei</label>
-        </fieldset>
-      </td>
-      <td>
-        <div id="vastus4"></div>
+        <input type="radio" name="raadio" id="jah" value="jah" onclick="raadioValik()">
+        <label for="jah">jah</label>
+        <input type="radio" name="raadio" id="ei" value="ei" onclick="raadioValik()">
+        <label for="ei">ei</label>
+        <div id="vastus4" class="tulemus"></div>
       </td>
     </tr>
 
-    <!-- 5. Raadiojaamad (text) -->
+    <!-- 5. text -->
     <tr>
+      <td><strong>5. Milliseid raadiojaamu oskad nimetada?</strong></td>
       <td>
-        <label for="jaamad"><strong>Milliseid raadiojaamu oskad nimetada?</strong></label>
-        <br>
-        <input type="text" id="jaamad" oninput="jaamadLugemine()">
-      </td>
-      <td>
-        <div id="vastus5"></div>
+        <input type="text" id="jaamad" name="jaamad" oninput="jaamadLugemine()">
+        <div id="vastus5" class="tulemus"></div>
       </td>
     </tr>
 
-    <!-- 6. Stiil (select) -->
+    <!-- 6. select -->
     <tr>
+      <td><strong>6. Millist muusikat sa kõige rohkem kuulad?</strong></td>
       <td>
-        <label for="stiil"><strong>Millist muusikat sa kõige rohkem kuulad?</strong></label>
-        <br>
-        <select id="stiil" onchange="stiilValik()">
-          <option value="">vali...</option>
+        <select name="stiil" id="stiil" onchange="stiilValik()">
+          <option value="vali">vali...</option>
           <option value="pop">pop</option>
           <option value="rock">rock</option>
-          <option value="hip-hop">hip-hop</option>
+          <option value="hiphop">hip-hop</option>
           <option value="klassikaline">klassikaline</option>
-          <option value="jazz">jazz</option>
           <option value="elektrooniline">elektrooniline</option>
+          <option value="jazz">jazz</option>
         </select>
-      </td>
-      <td>
-        <div id="vastus6"></div>
+        <div id="vastus6" class="tulemus"></div>
       </td>
     </tr>
 
-    <!-- 7. ja 8. Nupud -->
+    <!-- 7 ja 8. nupud -->
     <tr>
       <td>
         <input type="button" value="Saada" onclick="saada()">
-        <input type="button" value="Puhasta" onclick="puhasta()">
+        <input type="reset" value="Puhasta" onclick="puhasta()">
       </td>
       <td>
         <div id="kokkuvote"></div>

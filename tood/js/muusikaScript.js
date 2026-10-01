@@ -1,108 +1,100 @@
-/ 1. checkbox'id - muusikud
-function muusikudValik(){
+// 1. checkbox - muusikud (onchange)
+function muusikudValik() {
     let vastus1 = document.getElementById("vastus1");
-    let m1 = document.getElementById("m1");
-    let m2 = document.getElementById("m2");
-    let m3 = document.getElementById("m3");
+    let valikud = document.getElementsByName("muusik");
 
-    let valitud = "";
-    if (m1.checked) {
-        valitud += m1.value + ", ";
+    let muusikud = "";
+    for (let i = 0; i < valikud.length; i++) {
+        if (valikud[i].checked) {
+            muusikud += valikud[i].value + ", ";
+        }
     }
-    if (m2.checked) {
-        valitud += m2.value + ", ";
-    }
-    if (m3.checked) {
-        valitud += m3.value + ", ";
+    if (muusikud === "") {
+        muusikud = "pole valitud";
     }
 
-    if (valitud === "") {
-        valitud = "ühtegi muusikut pole valitud";
-    } else {
-        valitud = valitud.slice(0, -2);
-    }
+    vastus1.innerHTML = "Sinu valitud muusikud: " + muusikud;
+    vastus1.style.color = "green";
 
-    vastus1.innerHTML = "Sinu valitud muusikud: " + valitud;
-    vastus1.style.color = "blue";
-
-    return valitud;
+    return muusikud;
 }
 
-// 2. textarea - arvamus
-function arvamusLugemine(){
-    let arvamus = document.getElementById("arvamus");
+// 2. textarea - arvamus (oninput)
+function arvamusLugemine() {
     let vastus2 = document.getElementById("vastus2");
+    let arvamus = document.getElementById("arvamus");
 
     let tekst = arvamus.value;
     vastus2.innerHTML = "Sinu arvamus: " + tekst;
-    vastus2.style.color = "darkgreen";
+    vastus2.style.color = "blue";
 
     return tekst;
 }
 
-// 3. number - tunnid
-function tunnidLugemine(){
-    let tund = document.getElementById("tund");
+// 3. number - tunnid päevas (oninput)
+function tunnidLugemine() {
     let vastus3 = document.getElementById("vastus3");
+    let tunnid = document.getElementById("tunnid");
 
-    let tunnid = tund.value;
-    vastus3.innerHTML = "Sa kuulad muusikat " + tunnid + " tundi päevas";
-    vastus3.style.color = "purple";
+    let tund = tunnid.value;
+    vastus3.innerHTML = "Sa kuulad muusikat " + tund + " tundi päevas";
+    vastus3.style.color = "red";
 
-    return tunnid;
+    return tund;
 }
 
 // 4. radio - raadio jah/ei
-function raadioValik(){
+function raadioValik() {
     let vastus4 = document.getElementById("vastus4");
-    let raadioJah = document.getElementById("raadioJah");
-    let raadioEi = document.getElementById("raadioEi");
+    let jah = document.getElementById("jah");
+    let ei = document.getElementById("ei");
 
     let raadio = "";
-    if (raadioJah.checked) {
-        raadio = raadioJah.value;
-    } else if (raadioEi.checked) {
-        raadio = raadioEi.value;
+    if (jah.checked) {
+        raadio = jah.value;
+    } else if (ei.checked) {
+        raadio = ei.value;
     } else {
-        raadio = "vastust pole";
+        raadio = "pole valitud";
     }
 
     vastus4.innerHTML = "Raadio kuulamine: " + raadio;
-    vastus4.style.color = "orange";
+    vastus4.style.color = "purple";
 
     return raadio;
 }
 
-// 5. text - raadiojaamad
-function jaamadLugemine(){
-    let jaamad = document.getElementById("jaamad");
+// 5. text - raadiojaamad (oninput)
+function jaamadLugemine() {
     let vastus5 = document.getElementById("vastus5");
+    let jaamad = document.getElementById("jaamad");
 
     let tekst = jaamad.value;
     vastus5.innerHTML = "Sinu nimetatud jaamad: " + tekst;
-    vastus5.style.color = "brown";
+    vastus5.style.color = "orange";
 
     return tekst;
 }
 
-// 6. select - stiil
-function stiilValik(){
-    let stiil = document.getElementById("stiil");
-    let vastus6 = document.getElementById("vastus6");
 
-    let valitud = stiil.value;
-    if (valitud === "") {
-        valitud = "stiili pole valitud";
+function stiilValik() {
+    let vastus6 = document.getElementById("vastus6");
+    let stiil = document.getElementById("stiil");
+
+
+    let valitud = "pole valitud";
+    if (stiil.selectedIndex !== 0) {
+        valitud = stiil.value;
     }
 
     vastus6.innerHTML = "Sinu vastus: " + valitud;
-    vastus6.style.color = "red";
+    vastus6.style.color = "teal";
 
     return valitud;
 }
 
-// 7. nupp "Saada" - kokkuvõte
-function saada(){
+
+function saada() {
     let kokkuvote = document.getElementById("kokkuvote");
 
     let muusikud = muusikudValik();
@@ -113,27 +105,23 @@ function saada(){
     let stiil = stiilValik();
 
     kokkuvote.innerHTML = '<strong>Kokkuvõte:</strong><br>'
-        + 'Muusikud: ' + muusikud + '<br>'
-        + 'Arvamus koolis muusika kohta: ' + arvamus + '<br>'
-        + 'Tunde päevas: ' + tunnid + '<br>'
+        + 'Sinu valitud muusikud: ' + muusikud + '<br>'
+        + 'Sinu arvamus: ' + arvamus + '<br>'
+        + 'Sa kuulad muusikat ' + tunnid + ' tundi päevas<br>'
         + 'Raadio kuulamine: ' + raadio + '<br>'
-        + 'Raadiojaamad: ' + jaamad + '<br>'
-        + 'Lemmikstiil: ' + stiil;
+        + 'Sinu nimetatud jaamad: ' + jaamad + '<br>'
+        + 'Sinu vastus: ' + stiil;
+
     kokkuvote.style.backgroundColor = "pink";
+    kokkuvote.style.padding = "10px";
 }
 
-// 8. nupp "Puhasta"
-function puhasta(){
-    document.getElementById("vorm").reset();
 
-    document.getElementById("vastus1").innerHTML = "";
-    document.getElementById("vastus2").innerHTML = "";
-    document.getElementById("vastus3").innerHTML = "";
-    document.getElementById("vastus4").innerHTML = "";
-    document.getElementById("vastus5").innerHTML = "";
-    document.getElementById("vastus6").innerHTML = "";
-
-    let kokkuvote = document.getElementById("kokkuvote");
-    kokkuvote.innerHTML = "";
-    kokkuvote.style.backgroundColor = "";
+function puhasta() {
+    let ids = ["vastus1", "vastus2", "vastus3", "vastus4", "vastus5", "vastus6", "kokkuvote"];
+    for (let i = 0; i < ids.length; i++) {
+        document.getElementById(ids[i]).innerHTML = "";
+    }
+    document.getElementById("kokkuvote").style.backgroundColor = "transparent";
+    document.getElementById("kokkuvote").style.padding = "0";
 }

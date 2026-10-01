@@ -68,17 +68,39 @@ function sportValik(){
 
     return sport; // tagastab spordialade nimekirja
 }
+function klubiValik(){
+    let vastus5 = document.getElementById("vastus5");
+    let klubi = document.getElementById("klubi");
 
+    //1. rida loendis see on 0 rida JS
+    if(klubi.selectedIndex!==0){
+        vastus5.innerHTML ="Valitud spordiklub on " +klubi.value;
+        vastus5.style.color="red";
+    }
+    return klubi.value;
+}
+function kuupaevValik(){
+    let vastus6 = document.getElementById("vastus6");
+    let kuupaev=document.getElementById("kuupaev");
+
+    vastus6.innerHTML='Viimane külasyus oli'+kuupaev.value;
+    vastus6.style.color="red";
+    return kuupaev.value;
+}
+funktion
 function tervitus(){
     let vastus4 = document.getElementById("vastus4"); // otsib vastus4 elemendi
 
     let nimi = nimiLugemine(); // kutsub funktsiooni sulgudega ()
     let sugu = suguValik();
     let spordiala = sportValik();
+    let klubi = klubiValik();
+    let kuupaev = kuupaevValik();
 
     vastus4.innerHTML = 'Sisestatud nimi on: ' + nimi + '<br>'
         + sugu + '<br>'
-        + 'Spordialad: ' + spordiala;
+        + 'Spordialad: ' + spordiala+ '<br>' +'Valitud klub :' +klubi
+    + 'Valitud kuupäev: '+kuupaev;
      vastus4.style.backgroundColor = "pink"
 }
 function puhasta(){

@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 20px;
+}
+
+h1 {
+    color: black;
+}
+
+/* tabeli stiil: kaks veergu - küsimused ja vastused */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: top;
+    text-align: left;
+}
+
+th {
+    background-color: black;
+    color: white;
+}
+
+tr:nth-child(even) td {
+    background-color: whitesmoke;
+}
+
+/* sisendväljad */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    padding: 6px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 4px #3498db;
+}
+
+/* nupud + hover-efekt */
+input[type="button"],
+input[type="reset"] {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+input[type="button"] {
+    background-color: green;
+}
+
+input[type="button"]:hover {
+    background-color: green;
+}
+
+input[type="reset"] {
+    background-color: red;
+}
+
+input[type="reset"]:hover {
+    background-color: red;
+}
+
+/* tulemuse ala */
+.tulemus {
+    margin-top: 6px;
+    font-style: italic;
+}
+
+#kokkuvote {
+    border-radius: 6px;
+}
