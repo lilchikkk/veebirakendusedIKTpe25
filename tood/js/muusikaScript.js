@@ -105,6 +105,15 @@ function raadioValik() {
     vastus4.innerHTML = "Raadio kuulamine: " + raadio;
     vastus4.style.color = "purple";
 
+    let pildid4 = document.getElementById("pildid4");
+    if (jah.checked) {
+        pildid4.innerHTML = '<img src="muusikakusitlusPildid/yes.png" width="80">';
+    } else if (ei.checked) {
+        pildid4.innerHTML = '<img src="muusikakusitlusPildid/no.png" width="80">';
+    } else {
+        pildid4.innerHTML = "";
+    }
+
     return raadio;
 }
 
@@ -182,7 +191,7 @@ function saada() {
 
 
 function puhasta() {
-    let ids = ["vastus1", "vastus2", "vastus3", "vastus4", "vastus5", "vastus6", "kokkuvote", "pildid1", "esinejad"];
+    let ids = ["vastus1", "vastus2", "vastus3", "vastus4", "vastus5", "vastus6", "kokkuvote", "pildid1", "esinejad", "pildid4"];
     for (let i = 0; i < ids.length; i++) {
         document.getElementById(ids[i]).innerHTML = "";
     }
