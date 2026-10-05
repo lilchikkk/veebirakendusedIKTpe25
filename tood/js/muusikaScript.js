@@ -3,18 +3,49 @@ function muusikudValik() {
     let vastus1 = document.getElementById("vastus1");
     let valikud = document.getElementsByName("muusik");
 
+    let pildid = {
+        "Metallica": "muusikakusitlusPildid/metalika.jpg",
+        "Queen": "muusikakusitlusPildid/queen.jpg",
+        "ABBA": "muusikakusitlusPildid/abba.png",
+        "Eminem": "muusikakusitlusPildid/eminem.webp",
+        "Tuuli": "muusikakusitlusPildid/tuuli.jpg"
+    };
+
+    let lingid = {
+        "Metallica": "https://youtu.be/CHIWNDAwTqQ?si=OfZ9NXedjQzSHWEv",
+        "Queen": "https://youtu.be/n54E75UZUnM?si=sjbvUhv5ilxRcLI6",
+        "ABBA": "https://youtu.be/XEjLoHdbVeE?si=9xOX47fC_xBfc-RM",
+        "Eminem": "https://youtu.be/i2_kPKLJkBY?si=hNvfJRPJKxyIahpI",
+        "Tuuli": "https://youtu.be/eYzAjDG1_qY?si=NDWfb__d-vmEay5B"
+    };
+
     let muusikud = "";
+    let kokku = 0; // СЧЁТЧИК: сколько групп выбрано
     for (let i = 0; i < valikud.length; i++) {
         if (valikud[i].checked) {
             muusikud += valikud[i].value + ", ";
+            kokku++;
         }
     }
     if (muusikud === "") {
         muusikud = "pole valitud";
     }
 
-    vastus1.innerHTML = "Sinu valitud muusikud: " + muusikud;
+    vastus1.innerHTML = "Sinu valitud muusikud: " + muusikud + "<br>Valitud: " + kokku + " ansamblit";
     vastus1.style.color = "green";
+
+    let pildid1 = document.getElementById("pildid1");
+    pildid1.innerHTML = "";
+    for (let i = 0; i < valikud.length; i++) {
+        if (valikud[i].checked) {
+            let nimi = valikud[i].value;
+            pildid1.innerHTML += '<figure style="display:inline-block; text-align:center; margin:5px;">'
+                + '<img src="' + pildid[nimi] + '" width="100">'
+                + '<figcaption><strong>' + nimi + '</strong><br>'
+                + '<a href="' + lingid[nimi] + '" target="_blank">Kuula nende laulu siin</a>'
+                + '</figcaption></figure>';
+        }
+    }
 
     return muusikud;
 }
@@ -37,7 +68,20 @@ function tunnidLugemine() {
     let tunnid = document.getElementById("tunnid");
 
     let tund = tunnid.value;
-    vastus3.innerHTML = "Sa kuulad muusikat " + tund + " tundi päevas";
+
+
+    let hinnang = "";
+    if (tund !== "") {
+        if (tund < 2) {
+            hinnang = "Vähe";
+        } else if (tund <= 5) {
+            hinnang = "Paras";
+        } else {
+            hinnang = "Väga palju!";
+        }
+    }
+
+    vastus3.innerHTML = "Sa kuulad muusikat " + tund + " tundi päevas. " + hinnang;
     vastus3.style.color = "red";
 
     return tund;
@@ -104,6 +148,13 @@ function saada() {
     let jaamad = jaamadLugemine();
     let stiil = stiilValik();
 
+
+    if (muusikud === "pole valitud" || arvamus === "" || tunnid === ""
+        || raadio === "pole valitud" || jaamad === "" || stiil === "pole valitud") {
+        alert("Palun vasta kõikidele küsimustele!");
+        return;
+    }
+
     kokkuvote.innerHTML = '<strong>Kokkuvõte:</strong><br>'
         + 'Sinu valitud muusikud: ' + muusikud + '<br>'
         + 'Sinu arvamus: ' + arvamus + '<br>'
@@ -114,14 +165,29 @@ function saada() {
 
     kokkuvote.style.backgroundColor = "pink";
     kokkuvote.style.padding = "10px";
+
+    let esinejad = document.getElementById("esinejad");
+    let pildidHTML = document.getElementById("pildid1").innerHTML;
+    if (pildidHTML !== "") {
+        esinejad.innerHTML = "<strong>Esinejad:</strong><br>" + pildidHTML;
+        esinejad.style.border = "1px solid gray";
+        esinejad.style.padding = "10px";
+        esinejad.style.marginTop = "10px";
+    } else {
+        esinejad.innerHTML = "";
+        esinejad.style.border = "none";
+        esinejad.style.padding = "0";
+    }
 }
 
 
 function puhasta() {
-    let ids = ["vastus1", "vastus2", "vastus3", "vastus4", "vastus5", "vastus6", "kokkuvote"];
+    let ids = ["vastus1", "vastus2", "vastus3", "vastus4", "vastus5", "vastus6", "kokkuvote", "pildid1", "esinejad"];
     for (let i = 0; i < ids.length; i++) {
         document.getElementById(ids[i]).innerHTML = "";
     }
     document.getElementById("kokkuvote").style.backgroundColor = "transparent";
     document.getElementById("kokkuvote").style.padding = "0";
+    document.getElementById("esinejad").style.border = "none";
+    document.getElementById("esinejad").style.padding = "0";
 }

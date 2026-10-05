@@ -1,11 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: aliceblue;
     margin: 20px;
 }
 
 h1 {
     color: black;
+    text-align: center;
 }
 
 /* tabeli stiil: kaks veergu - küsimused ja vastused */
@@ -14,6 +15,8 @@ table {
     width: 100%;
     max-width: 900px;
     background-color: white;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px gray;
 }
 
 th, td {
@@ -70,7 +73,7 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-    background-color: green;
+    background-color: darkgreen; /* */
 }
 
 input[type="reset"] {
@@ -78,7 +81,7 @@ input[type="reset"] {
 }
 
 input[type="reset"]:hover {
-    background-color: red;
+    background-color: darkred; /* */
 }
 
 /* tulemuse ala */
@@ -89,4 +92,26 @@ input[type="reset"]:hover {
 
 #kokkuvote {
     border-radius: 6px;
+}
+
+/*pildid */
+img {
+    border-radius: 8px;
+    box-shadow: 0 2px 6px gray;
+}
+
+/* blokk Esinejad */
+#esinejad {
+    background-color: lavender;
+    border-radius: 6px;
+}
+
+
+a {
+    color: crimson;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
