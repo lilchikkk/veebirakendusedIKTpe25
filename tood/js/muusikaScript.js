@@ -157,13 +157,6 @@ function saada() {
     let jaamad = jaamadLugemine();
     let stiil = stiilValik();
 
-
-    if (muusikud === "pole valitud" || arvamus === "" || tunnid === ""
-        || raadio === "pole valitud" || jaamad === "" || stiil === "pole valitud") {
-        alert("Palun vasta kõikidele küsimustele!");
-        return;
-    }
-
     kokkuvote.innerHTML = '<strong>Kokkuvõte:</strong><br>'
         + 'Sinu valitud muusikud: ' + muusikud + '<br>'
         + 'Sinu arvamus: ' + arvamus + '<br>'

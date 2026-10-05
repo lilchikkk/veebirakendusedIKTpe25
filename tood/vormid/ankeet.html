@@ -2,189 +2,122 @@
 <html lang="et">
 <head>
     <meta charset="UTF-8">
-    <title>Vormid ja nupud HTML keeles</title>
-    <script src="../js/ankeetScript.js"></script>
+    <title>Muusika ankeet</title>
+    <link rel="stylesheet" href="vormid/muusikaStyle.css">
+    <script src="js/muusikaScript.js"></script>
 </head>
 <body>
-<h1>Sportlase ankeet</h1>
+<h1>Muusika ankeet</h1>
 <form action="#">
     <table>
         <tr>
-            <td>
-                <label for="nimi">Sisesta oma nimi:</label>
-            </td>
-            <td>
-                <input type="text" id="nimi" name="nimi" oninput="nimiLugemine()">
-            </td>
-            <td>
-                <div id="vastus"></div>
-            </td>
+            <th>Küsimused</th>
+            <th>Vastused</th>
+            <th>Tulemus</th>
         </tr>
+
+        <!-- 1. checkbox - ainult mitu valikut -->
         <tr>
+            <td><strong>1. Milliseid muusikuid/ansambleid sa tead?</strong></td>
             <td>
-                <strong>Vali sugu:</strong>
-            </td>
-            <td>
-                <!-- radionupp - ainult üks valik on õige -->
-                <input type="radio" name="sugu" id="naine"  value="naine" onclick="suguValik()">
-                <label for="naine">naine</label>
+                <input type="checkbox" name="muusik" id="metallica" value="Metallica" onchange="muusikudValik()">
+                <label for="metallica">Metallica</label>
                 <br>
-                <input type="radio" name="sugu" id="mees"  value="mees" onclick="suguValik()">
-                <label for="mees">mees</label>
+                <input type="checkbox" name="muusik" id="queen" value="Queen" onchange="muusikudValik()">
+                <label for="queen">Queen</label>
                 <br>
-                <input type="radio" name="sugu" id="muu"  value="muu" onclick="suguValik()">
-                <label for="muu">muu</label>
+                <input type="checkbox" name="muusik" id="abba" value="ABBA" onchange="muusikudValik()">
+                <label for="abba">ABBA</label>
+                <br>
+                <input type="checkbox" name="muusik" id="eminem" value="Eminem" onchange="muusikudValik()">
+                <label for="eminem">Eminem</label>
+                <br>
+                <input type="checkbox" name="muusik" id="tuuli" value="Tuuli" onchange="muusikudValik()">
+                <label for="tuuli">Tuuli</label>
             </td>
             <td>
-                <div id="vastus2"></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Spordialad</strong>
-            </td>
-            <td>
-                <fieldset>
-                    <legend>Spordialad:</legend>
-
-                    <strong>Spordialad</strong>
-                    <br>
-
-                    <input type="checkbox" name="spordiala" id="jooksmine" value="jooksmine" onchange="sportValik()">
-                    <label for="jooksmine">jooksmine</label>
-                    <br>
-
-                    <input type="checkbox" name="spordiala" id="ujumine" value="ujumine"onchange="sportValik()">
-                    <label for="ujumine">ujumine</label>
-                    <br>
-
-                    <input type="checkbox" name="spordiala" id="suusatamine" value="suusatamine"onchange="sportValik()">
-                    <label for="suusatamine">suusatamine</label>
-                    <br>
-
-                    <input type="checkbox" name="spordiala" id="uisutamine" value="uisutamine"onchange="sportValik()">
-                    <label for="uisutamine">uisutamine</label>
-                    <br>
-
-                    <input type="checkbox" name="spordiala" id="poks" value="poks"onchange="sportValik()">
-                    <label for="poks">poks</label>
-                    <br>
-
-                </fieldset>
-
-            </td>
-            <td>
-                <div id="vastus3"></div>
+                <div id="vastus1" class="tulemus"></div>
+                <div id="pildid1"></div>
             </td>
         </tr>
 
+        <!-- 2. textarea -->
         <tr>
+            <td><strong>2. Mida arvad muusika kuulamisest koolis?</strong></td>
             <td>
-                <label for="tund">Mitu tundi nädalas sina trennid?</label>
+                <textarea id="arvamus" name="arvamus" rows="4" cols="40" oninput="arvamusLugemine()"></textarea>
             </td>
             <td>
-                <input type="number" min="1" max="24" step="1" value="6" id="tund" name="tund">
+                <div id="vastus2" class="tulemus"></div>
             </td>
         </tr>
+
+        <!-- 3. number -->
         <tr>
+            <td><strong>3. Mitu tundi päevas sa kuulad muusikat?</strong></td>
             <td>
-                <label for="klubi">Mis klubi sa külastad?</label>
+                <input type="number" min="0" max="24" step="1" id="tunnid" name="tunnid" oninput="tunnidLugemine()">
             </td>
             <td>
-                <select name="klubi" id="klubi" onchange="klubiValik()">
+                <div id="vastus3" class="tulemus"></div>
+            </td>
+        </tr>
+
+        <!-- 4. radionupp - ainult üks valik on õige -->
+        <tr>
+            <td><strong>4. Kas sa kuulad raadiot?</strong></td>
+            <td>
+                <input type="radio" name="raadio" id="jah" value="jah" onclick="raadioValik()">
+                <label for="jah">jah</label>
+                <input type="radio" name="raadio" id="ei" value="ei" onclick="raadioValik()">
+                <label for="ei">ei</label>
+            </td>
+            <td>
+                <div id="vastus4" class="tulemus"></div>
+                <div id="pildid4"></div>
+            </td>
+        </tr>
+
+        <!-- 5. text -->
+        <tr>
+            <td><strong>5. Milliseid raadiojaamu oskad nimetada?</strong></td>
+            <td>
+                <input type="text" id="jaamad" name="jaamad" oninput="jaamadLugemine()">
+            </td>
+            <td>
+                <div id="vastus5" class="tulemus"></div>
+            </td>
+        </tr>
+
+        <!-- 6. select -->
+        <tr>
+            <td><strong>6. Millist muusikat sa kõige rohkem kuulad?</strong></td>
+            <td>
+                <select name="stiil" id="stiil" onchange="stiilValik()">
                     <option value="vali">vali...</option>
-                    <option value="gym">GYM</option>
-                    <option value="myfitnes">MyFitnes</option>
-                    <option value="gym24">Gym24</option>
-                    <option value="kalevspa">KalevSpa</option>
+                    <option value="pop">pop</option>
+                    <option value="rock">rock</option>
+                    <option value="hiphop">hip-hop</option>
+                    <option value="klassikaline">klassikaline</option>
+                    <option value="elektrooniline">elektrooniline</option>
+                    <option value="jazz">jazz</option>
                 </select>
             </td>
             <td>
-                <div id="vastus5"></div>
+                <div id="vastus6" class="tulemus"></div>
             </td>
         </tr>
+
+        <!-- nupud -->
         <tr>
             <td>
-                <label for="varv">Mis värvi tossud sul on?</label>
-            </td>
-            <td>
-                <input type="color" id="varv">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="kuupaev">Millal oli su viimane trenn?</label>
-            </td>
-            <td>
-                <input type="date" id="kuupaev" min="2020-12-31" max ='2026-12-31'  onchange = 'kuupaevaValik'>
-            </td>
-        </tr>
-        <tr>
-            <!-- USERNAME -->
-            <td>
-                <label for="username">Username:</label><br>
-            </td>
-            <td>
-                <input type="text" id="username" name="username">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="pwd">Parool:</label><br>
-            </td>
-            <td>
-                <input type="password" id="pwd" name="pwd">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="birthdaytime">Sinu sünnipäev (data ja aeg):</label>
-            </td>
-            <td>
-                <input type="datetime-local" id="birthdaytime" name="birthdaytime">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="email">Palun kirjuta siia oma e-posti adress:</label>
-            </td>
-            <td>
-                <input type="email" id="email" name="email">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="myfile">Vajuta fail:</label>
-            </td>
-            <td>
-                <input type="file" id="myfile" name="myfile">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="phone">Kirjuta oma telefoninumber:</label>
-            </td>
-            <td>
-                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="appt">Select a time:</label>
-            </td>
-            <td>
-                <input type="time" id="appt" name="appt">
-            </td>
-        </tr>
-        <tr>
-            <td>
+                <input type="button" value="Saada" onclick="saada()">
                 <input type="reset" value="Puhasta" onclick="puhasta()">
             </td>
+            <td></td>
             <td>
-                <input type="button" value="Näita andmed" onclick="tervitus()">
-            </td>
-            <td>
-                <div id="vastus4"></div>
+                <div id="kokkuvote"></div>
+                <div id="esinejad"></div>
             </td>
         </tr>
     </table>

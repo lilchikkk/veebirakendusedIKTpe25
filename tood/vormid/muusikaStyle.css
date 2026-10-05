@@ -65,7 +65,7 @@ input[type="reset"] {
     color: white;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.2s;
+
 }
 
 input[type="button"] {
@@ -104,14 +104,4 @@ img {
 #esinejad {
     background-color: lavender;
     border-radius: 6px;
-}
-
-
-a {
-    color: crimson;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
