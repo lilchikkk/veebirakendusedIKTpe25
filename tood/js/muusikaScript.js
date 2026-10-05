@@ -20,7 +20,7 @@ function muusikudValik() {
     };
 
     let muusikud = "";
-    let kokku = 0; // СЧЁТЧИК: сколько групп выбрано
+    let kokku = 0;
     for (let i = 0; i < valikud.length; i++) {
         if (valikud[i].checked) {
             muusikud += valikud[i].value + ", ";
