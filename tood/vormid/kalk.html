@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>Saia kalkulaator</title>
     <script src="../js/saiakalkScript.js"></script>
+    <script src="../js/tempKalk.js"></script>
     <link rel="stylesheet" href="kalkStyle.css">
 </head>
 <body>
 <h1>Kalkulaatorid</h1>
+<section id="yld">
 <section id="osa1">
     <h2>Saia kalkulaator</h2>
     <label for="kogus">Kogus:</label>
@@ -25,6 +27,24 @@
     <img src="https://parnamaed.ee/img/rTU0D9Apl0duEhUntEF~pOw~e~e.png" alt="" id="pilt" width=100 height=100>
 
     <div id="vastus"></div>
+</section>
+
+<section id="osa2">
+    <h2>Temperatuuri kalkulaator</h2>
+
+    <label for="temp">Sisesta temperatuuri</label>
+    <input type="number" id="temp" min="-50" max="50" step="1" value="0" >
+    <br>
+
+    <input type="radio" name="tempValik" id="celsius" value="celsius" onchange="tempTeisendus()" >
+    <label for="celsius">&deg;C - Celsius</label>
+    <br>
+    <input type="radio" name="tempValik" id="farenheit" value="farenheit" onchange="tempTeisendus()" >
+    <label for="farenheit">&deg;F - Farenheit</label>
+    <br>
+    <div id="vastus2"></div>
+    <img src="https://images.prismic.io/sketchplanations/5c1c9045-eedb-410e-a699-bcebeddf8d39_SP+807+-+Celsius+and+Fahrenheit.png?auto=compress,format&w=1200" alt="" id="tempP" width=100 height=100>
+</section>
 </section>
 </body>
 </html>
