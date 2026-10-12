@@ -4,6 +4,25 @@ section#yld{
     display: flex;
     gap: 10px
 }
+section#osa4{
+    border: 1pt solid black;
+    border-radius: 10pt;
+    padding: 10pt;
+    width: 30%;
+}
+#osa4 p {
+    font-weight: bold;
+}
+#vastusKysimus {
+    color: red;
+    font-weight: bold;
+}
+section#osa3{
+    border: 1pt solid black;
+    border-radius: 10pt;
+    padding: 10pt;
+    width: 30%;
+}
 section#osa1{
     border: 1pt solid black;
     border-radius: 10pt;

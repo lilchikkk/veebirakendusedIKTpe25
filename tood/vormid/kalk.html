@@ -5,46 +5,82 @@
     <title>Saia kalkulaator</title>
     <script src="../js/saiakalkScript.js"></script>
     <script src="../js/tempKalk.js"></script>
+    <script src="../js/valuutaScript.js"></script>
+    <script src="../js/vanuseKalk.js"></script>
     <link rel="stylesheet" href="kalkStyle.css">
 </head>
 <body>
 <h1>Kalkulaatorid</h1>
 <section id="yld">
-<section id="osa1">
-    <h2>Saia kalkulaator</h2>
-    <label for="kogus">Kogus:</label>
-    <input type="number" id="kogus" min="1", max="10" step="1" onchange="saiaKalk()">
-    <br>
-    <label for="saiatyyp">Palun vali saia tüüp</label>
-    <select name="saiatyyp" id="saiatyyp" onchange ="saiaKalk()">
-      <option value="vali">vali..</option>
-      <option value="mooni">moonisai</option>
-      <option value="juustu">juustusai</option>
-      <option value="pontsik">pontsiksai</option>
-      <option value="kaneeli">kaneelisai</option>
+    <section id="osa1">
+        <h2>Saia kalkulaator</h2>
+        <label for="kogus">Kogus:</label>
+        <input type="number" id="kogus" min="1" max="10" step="1" onchange="saiaKalk()">
+        <br>
+        <label for="saiatyyp">Palun vali saia tüüp</label>
+        <select name="saiatyyp" id="saiatyyp" onchange ="saiaKalk()">
+            <option value="vali">vali..</option>
+            <option value="mooni">moonisai</option>
+            <option value="juustu">juustusai</option>
+            <option value="pontsik">pontsiksai</option>
+            <option value="kaneeli">kaneelisai</option>
 
-    </select>
-    <img src="https://parnamaed.ee/img/rTU0D9Apl0duEhUntEF~pOw~e~e.png" alt="" id="pilt" width=100 height=100>
+        </select>
+        <img src="https://parnamaed.ee/img/rTU0D9Apl0duEhUntEF~pOw~e~e.png" alt="" id="pilt" width=100 height=100>
 
-    <div id="vastus"></div>
-</section>
+        <div id="vastus"></div>
+    </section>
 
-<section id="osa2">
-    <h2>Temperatuuri kalkulaator</h2>
+    <section id="osa2">
+        <h2>Temperatuuri kalkulaator</h2>
 
-    <label for="temp">Sisesta temperatuuri</label>
-    <input type="number" id="temp" min="-50" max="50" step="1" value="0" >
-    <br>
+        <label for="temp">Sisesta temperatuuri</label>
+        <input type="number" id="temp" min="-50" max="50" step="1" value="0" oninput="tempTeisendus()">
+        <br>
 
-    <input type="radio" name="tempValik" id="celsius" value="celsius" onchange="tempTeisendus()" >
-    <label for="celsius">&deg;C - Celsius</label>
-    <br>
-    <input type="radio" name="tempValik" id="farenheit" value="farenheit" onchange="tempTeisendus()" >
-    <label for="farenheit">&deg;F - Farenheit</label>
-    <br>
-    <div id="vastus2"></div>
-    <img src="https://images.prismic.io/sketchplanations/5c1c9045-eedb-410e-a699-bcebeddf8d39_SP+807+-+Celsius+and+Fahrenheit.png?auto=compress,format&w=1200" alt="" id="tempP" width=100 height=100>
-</section>
+        <input type="radio" name="tempValik" id="celsius" value="celsius" onchange="tempTeisendus()" >
+        <label for="celsius">&deg;C - Celsius</label>
+        <br>
+        <input type="radio" name="tempValik" id="farenheit" value="farenheit" onchange="tempTeisendus()" >
+        <label for="farenheit">&deg;F - Farenheit</label>
+        <br>
+        <div id="vastus2"></div>
+        <img src="https://images.prismic.io/sketchplanations/5c1c9045-eedb-410e-a699-bcebeddf8d39_SP+807+-+Celsius+and+Fahrenheit.png?auto=compress,format&w=1200" alt="" id="tempP" width=100 height=100>
+    </section>
+    <section id="osa3">
+        <h2>Valuuta kalkulaator</h2>
+
+        <label for="euro">Sisesta summa eurodes</label>
+        <input type="number" id="euro" min="1" max="1000" step="1" onchange="valuutaKalk()">
+        <br>
+
+        <label for="valuuta">Kirjuta kuhu teisendaje (dollar, juann, UAH)</label>
+        <input type="text" id="valuuta" name="valuuta" oninput="valuutaKalk()">
+
+        <div id="vastus3"></div>
+    </section>
+
+    <section id="osa4">
+        <h2>Vanusekalkulaator</h2>
+
+        <label for="synniaasta">Sisesta oma sünniaasta</label>
+        <input type="number" id="synniaasta" min="1950" max="2026" step="1" oninput="vanuseKalk()">
+        <br>
+
+        <div id="vastus4"></div>
+        <img id="vanusePilt" src="https://thedoctorskitchen.com.au/cdn/shop/articles/age-is-mind-over-matter_e2853032-2e24-11e6-ae51-029221314c47_1200x.jpg?v=1531364698" width="100" height="100" alt="">
+        <br>
+
+        <p>Kas sulle meeldib sinu vanus?</p>
+        <input type="radio" name="vanusValik" id="meeldibJah" value="jah" onchange="vanuseKalk()">
+        <label for="meeldibJah">Jah</label>
+
+        <input type="radio" name="vanusValik" id="meeldibEi" value="ei" onchange="vanuseKalk()">
+        <label for="meeldibEi">Ei</label>
+
+        <div id="vastusKysimus"></div>
+    </section>
+
 </section>
 </body>
 </html>
