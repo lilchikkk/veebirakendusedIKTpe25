@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Kuupäev ja kellaaeg</title>
+    <script src="../js/kuupaevScript.js"></script>
+    <link rel="stylesheet" href="kuupaevStyle.css">
+</head>
+<body>
+<h1>Kuupäev ja kellaaeg</h1>
+<p><a href="../../tehtud.html">Tagasi tehtud tööde juurde</a></p>
+
+<section id="kuupaev">
+    <h2>Date objekt JavaScriptis</h2>
+
+    <button type="button" onclick="tanaOn()">TÄNA ON</button>
+    <br>
+
+    <label for="synnipaev">Minu sünnikuupäev:</label>
+    <input type="date" id="synnipaev" value="2010-01-26">
+    <br>
+    <button type="button" onclick="synnipaevani()">Minu sünnipäevani</button>
+
+    <div id="vastus"></div>
+</section>
+</body>
+</html>

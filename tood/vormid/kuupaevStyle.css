@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
+section#kuupaev {
+    border: 1pt solid black;
+    border-radius: 10pt;
+    padding: 10pt;
+    width: 40%;
+    background-color: lavender;
+}
+button {
+    padding: 8pt 14pt;
+    background-color: pink;
+    border: 1pt solid black;
+    border-radius: 10pt;
+
+}
+button:hover {
+    background-color: lightpink;
+}
+#vastus {
+    margin-top: 10pt;
+    font-weight: bold;
+}
