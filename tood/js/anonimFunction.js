@@ -49,3 +49,36 @@ console.log(liitmine(3,5));
 //noolefunktsioon ja massiviist elementide kuvamine
 const array = [1, 2, 3, 4, 5];
 array.forEach(element => console.log(element));
+
+
+const number = 5;
+const isEven = number => number % 2 === 0 ? "paaris" : "paaritu";
+
+console.log(isEven(number)); // Väljund: paaritu
+
+const arvud = [1, 2, 3, 4, 5];
+
+arvud.forEach(nr => {
+    const paaris = nr % 2 === 0 ? "paaris" : "paaritu";
+    console.log(`${nr} is ${paaris}`);
+});
+
+let nimed = ["Kati", "Marta", "Andres", "Jüri", "Liisa"];
+
+nimed.forEach(function(nimi) {
+    console.log(`<li>${nimi}</li>`);
+});
+
+
+const teostaAJAXParing = (url, callback) => {
+    setTimeout(() => {
+        const vastus = "Vastus andmebaasist";
+        callback(vastus);
+    }, 2000);
+};
+
+const callbackFunktsioon = (vastus) => {
+    console.log("Vastus saadud:", vastus);
+};
+
+teostaAJAXParing("https://api.example.com/data", callbackFunktsioon);
