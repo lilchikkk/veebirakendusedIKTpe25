@@ -100,8 +100,19 @@ function smail() {
         t.beginPath();
         t.strokeStyle = "black";
         t.lineWidth = 4;
-        t.moveTo(135, 225); //alguspunkt
-        t.lineTo(165, 225); //lõpppunkt
+        t.arc(150, 200, 50, 0, Math.PI, false);
         t.stroke();
+    }
+}
+//pilt failist
+function pilt(){
+    const tahvel=document.getElementById("tahvel");
+    if(tahvel.getContext){
+        let t=tahvel.getContext("2d");
+        let fail = new Image();
+        fail.src="https://upload.wikimedia.org/wikipedia/commons/8/85/Smiley.svg"
+        fail.onload=()=>{
+            t.drawImage(fail, 50, 10, 80, 80);
+        }
     }
 }
