@@ -25,9 +25,28 @@
 <input type="number" min="1" max="150" step="1" id="raadius" onchange="ring()">
 <input type="color" id="varv" onchange="ring()">
 <br>
-<input type="button" value="Smail" onclick="smail()">
+
+<input type="button" value="Smail (Täielik)" onclick="smail()">
+<br>
+<input type="button" value="Smaili Pea" onclick="smailPea()">
+<br>
+<input type="button" value="Smaili Silmad" onclick="smailSilmad()">
+<br>
+<input type="button" value="Smaili Nina" onclick="smailNina()">
+<label for="ninaLaius">Laius</label>
+<input type="number" min="1" max="100" step="5" id="ninaLaius" value="10" onchange="smailNina()">
+<label for="ninaKorgus">Kõrgus</label>
+<input type="number" min="1" max="100" step="5" id="ninaKorgus" value="30" onchange="smailNina()">
+<br>
+<input type="button" value="Smaili Kõrvad" onclick="smailKorvad()">
+<label for="korvLaius">Laius</label>
+<input type="number" min="1" max="100" step="5" id="korvLaius" value="15" onchange="smailKorvad()">
+<label for="korvKorgus">Kõrgus</label>
+<input type="number" min="1" max="100" step="5" id="korvKorgus" value="40" onchange="smailKorvad()">
+<br>
+<input type="button" value="Smaili Suu" onclick="smailSuu()">
+
 <br>
 <input type="button" value="Pilt" onclick="pilt()">
-
 </body>
 </html>

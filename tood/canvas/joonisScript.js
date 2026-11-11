@@ -68,17 +68,22 @@ function ring(){
 }
 
 //smail ('_')
-function smail() {
+function smailPea() {
     const tahvel = document.getElementById("tahvel");
-
     if (tahvel.getContext) {
         let t = tahvel.getContext("2d");
-        //pea
         t.beginPath();
         t.fillStyle = "yellow";
         t.arc(150, 200, 100, 0, 2 * Math.PI);
         t.fill();
         t.stroke();
+    }
+}
+
+function smailSilmad() {
+    const tahvel = document.getElementById("tahvel");
+    if (tahvel.getContext) {
+        let t = tahvel.getContext("2d");
         //vasak silm
         t.beginPath();
         t.fillStyle = "black";
@@ -88,15 +93,42 @@ function smail() {
         t.beginPath();
         t.arc(190, 160, 10, 0, 2 * Math.PI);
         t.fill();
-        //nina
+    }
+}
+
+function smailNina() {
+    const tahvel = document.getElementById("tahvel");
+    const ninaLaius = document.getElementById("ninaLaius");
+    const ninaKorgus = document.getElementById("ninaKorgus");
+    if (tahvel.getContext) {
+        let t = tahvel.getContext("2d");
         t.fillStyle = "orange";
-        t.fillRect(145, 180, 10, 30);
-        //vasak kõrv
+        t.fillRect(145, 180, ninaLaius.value, ninaKorgus.value);
+    }
+}
+
+function smailKorvad() {
+    const tahvel = document.getElementById("tahvel");
+    const korvLaius = document.getElementById("korvLaius");
+    const korvKorgus = document.getElementById("korvKorgus");
+    if (tahvel.getContext) {
+        let t = tahvel.getContext("2d");
         t.fillStyle = "yellow";
-        t.fillRect(35, 180, 15, 40);
-        //parem kõrv
-        t.fillRect(250, 180, 15, 40);
-        //suu
+        let w = Number(korvLaius.value);
+        let h = Number(korvKorgus.value);
+
+        // vasak kõrv
+        t.fillRect(50 - w, 180, w, h);
+
+        // parem kõrv
+        t.fillRect(250, 180, w, h);
+    }
+}
+
+function smailSuu() {
+    const tahvel = document.getElementById("tahvel");
+    if (tahvel.getContext) {
+        let t = tahvel.getContext("2d");
         t.beginPath();
         t.strokeStyle = "black";
         t.lineWidth = 4;
@@ -104,6 +136,7 @@ function smail() {
         t.stroke();
     }
 }
+
 //pilt failist
 function pilt(){
     const tahvel=document.getElementById("tahvel");
@@ -115,4 +148,12 @@ function pilt(){
             t.drawImage(fail, 50, 10, 80, 80);
         }
     }
+}
+
+function smail() {
+    smailPea();
+    smailKorvad();
+    smailSilmad();
+    smailNina();
+    smailSuu();
 }
