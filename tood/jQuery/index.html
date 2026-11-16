@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery kasutamine</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"
+            integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI="
+            crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+        function tekstPunaseks() {
+            $('#tekstikast').css('color', 'red');
+        }
+
+        function tekstMustaks() {
+            $('#tekstikast').css('color', 'black');
+        }
+
+        function leheStart() {
+            $('#tekstikast').mouseenter(tekstPunaseks);
+            $('#tekstikast').mouseleave(tekstMustaks);
+            $('#tekstikast').draggable();
+            $('#tekstikast').bind("drag", koordLugemine);
+            $('#pilt').draggable();
+            $('#pilt').bind("drag", koordLugemine);
+        }
+        function koordLugemine(event, ui){
+            let koht=ui.offset;
+            $('#koordinadid').html('x:'+ koht.left+ ' || y:'+ koht.top);
+        }
+        //paremale nuppu vajutamine
+        $('#paremale').click(function () {
+            $('#tekstikast, h2').animate({left: '200px'}, 1000);
+            $(this).hide();
+            $('#vasakule').show();
+        });
+        //vasaku nuppu vajutamine
+        $('#vasakule').click(function () {
+            $('#tekstikast, h2').animate({left: '0px'}, 1000);
+            $(this).hide();
+            $('#paremale').show();
+        });
+        });
+    </script>
+
+
+    <link rel="stylesheet" href="queryStyle.css">
+</head>
+<body onload="leheStart()">
+<header>
+    <h1>jQuery kasutamine</h1>
+</header>
+<main>
+    <section>
+        <h2>jQuery CDN</h2>
+
+        <div id="tekstikast">
+            jQuery-see on raamistik (teek)
+            <br>
+            CDN - raamistiku allalaadimisviis välisserverist
+            <br>
+            Ametlik CDN asub https://releases.jquery.com/
+        </div>
+
+        <input type="button" value="paremale" id="paremale">
+        <input type="button" value="vasakule" id="vasakule">
+        <input type="button" value="peida teksti"
+               onclick="$('#tekstikast').hide(2000)">
+        <input type="button" value="kuva teksti"
+               onclick="$('#tekstikast').show(2000, alert('Kohe kuvab tekst'))">
+    </section>
+    <div id="koordinadid"></div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOWk50hf-9HvzZommJ-CQbaMIq_GocNC0_o0q0z3mZ2Q&s=10" alt="" id="pilt">
+</main>
+</body>
+</html>
