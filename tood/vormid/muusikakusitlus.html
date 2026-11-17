@@ -3,12 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <title>Muusika ankeet</title>
-  <link rel="stylesheet" href="vormid/muusikaStyle.css">
-  <script src="js/muusikaScript.js"></script>
+  <link rel="stylesheet" href="muusikaStyle.css">
+  <script src="../js/muusikaScript.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+
+  <script>
+    $(function(){
+      // peidame vead
+      $('.viga').hide();
+
+      // puhastusnupp
+      $('#puhasta').click(function(){
+        $('#muusikaVorm')[0].reset();
+        $('.viga').hide();
+      });
+
+      // valideerimine, kui vorm on saadetud
+      $('#muusikaVorm').submit(function(event){
+        let valid = true;
+
+        // 1. Checkbox
+        if($('input[name="muusik"]:checked').length === 0){
+          $('#viga1').show();
+          valid = false;
+        } else { $('#viga1').hide(); }
+
+        // 2. Textarea
+        if($('#arvamus').val().trim() === ""){
+          $('#viga2').show();
+          valid = false;
+        } else { $('#viga2').hide(); }
+
+        // 3. Number (0–24)
+        let tunnid = $('#tunnid').val();
+        if(tunnid === "" || isNaN(tunnid) || tunnid < 0 || tunnid > 24){
+          $('#viga3').show();
+          valid = false;
+        } else { $('#viga3').hide(); }
+
+        // 4. Radio
+        if($('input[name="raadio"]:checked').length === 0){
+          $('#viga4').show();
+          valid = false;
+        } else { $('#viga4').hide(); }
+
+        // 5. Text (ainult tähed)
+        let tekst = $('#jaamad').val().trim();
+        if(tekst === "" || !/^[a-zA-ZäõüöÄÕÜÖ\s]+$/.test(tekst)){
+          $('#viga5').show();
+          valid = false;
+        } else { $('#viga5').hide(); }
+
+        // 6. Select
+        if($('#stiil').val() === "vali" || $('#stiil').val() === ""){
+          $('#viga6').show();
+          valid = false;
+        } else { $('#viga6').hide(); }
+
+        // kui on vead, siis ei ole vaja vormi saada
+        if(!valid){
+          event.preventDefault();
+        } else {
+          event.preventDefault(); // Et leht kohe ära ei laadiks
+          alert("Vorm on edukalt saadetud!");
+        }
+      });
+    });
+  </script>
 </head>
 <body>
 <h1>Muusika ankeet</h1>
-<form action="#">
+<form action="#" id="muusikaVorm">
   <table>
     <tr>
       <th>Küsimused</th>
@@ -35,6 +103,7 @@
         <label for="tuuli">Tuuli</label>
 
         <div id="vastus1" class="tulemus"></div>
+        <span class="viga" id="viga1"> Vali vähemalt üks muusik! </span>
         <div id="pildid1"></div>
       </td>
     </tr>
@@ -45,6 +114,7 @@
       <td>
         <textarea id="arvamus" name="arvamus" rows="4" cols="40" oninput="arvamusLugemine()"></textarea>
         <div id="vastus2" class="tulemus"></div>
+        <span class="viga" id="viga2"> Palun täida see väli! </span>
       </td>
     </tr>
 
@@ -54,6 +124,7 @@
       <td>
         <input type="number" min="0" max="24" step="1" id="tunnid" name="tunnid" oninput="tunnidLugemine()">
         <div id="vastus3" class="tulemus"></div>
+        <span class="viga" id="viga3"> Palun täida väli 0 kuni 24</span>
       </td>
     </tr>
 
@@ -67,6 +138,7 @@
         <label for="ei">ei</label>
         <div id="vastus4" class="tulemus"></div>
         <div id="pildid4"></div>
+        <span class="viga" id="viga4"> Vali üks vastus (jah või ei)!</span>
       </td>
     </tr>
 
@@ -76,6 +148,7 @@
       <td>
         <input type="text" id="jaamad" name="jaamad" oninput="jaamadLugemine()">
         <div id="vastus5" class="tulemus"></div>
+        <span class="viga" id="viga5"> Sisesta ainult tähed!</span>
       </td>
     </tr>
 
@@ -93,21 +166,25 @@
           <option value="jazz">jazz</option>
         </select>
         <div id="vastus6" class="tulemus"></div>
+        <span class="viga" id="viga6"> Vali loendist sobiv stiil!</span>
       </td>
     </tr>
 
-    <!-- 7 ja 8. nupud -->
+    <!-- Nupud ja tulemused -->
     <tr>
       <td>
-        <input type="button" value="Saada" onclick="saada()">
-        <input type="reset" value="Puhasta" onclick="puhasta()">
+        <input type="button" value="Puhasta" id="puhasta">
+        <input type="button" value="Näita andmeid" onclick="tervitus()">
+        <input type="submit" value="Andmete kontroll">
       </td>
       <td>
+        <div id="vastus7" class="tulemus"></div>
         <div id="kokkuvote"></div>
         <div id="esinejad"></div>
       </td>
     </tr>
   </table>
 </form>
+
 </body>
 </html>

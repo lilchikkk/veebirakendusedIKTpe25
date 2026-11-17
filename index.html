@@ -3,8 +3,8 @@
 <html lang="et">
 <head> <!-- tehniline info-->
     <meta charset="UTF-8">
-    <title>Liliia  veebirakenduste aluste tööd</title>
-    <link rel = "stylesheet"  href = "style.css">
+    <title>Liliia veebirakenduste aluste tööd</title>
+    <link rel="stylesheet" href="style.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
@@ -13,25 +13,53 @@
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"
             integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI="
             crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function () {
 
-    function tekstSiniseks() {
-    $('#osa1').css('color', 'blue');
-    }
-    //vasaku nuppu vajutamine
-        $('#vasakule').click(function () {
-            $('#osa2, h2').animate({left: '0px'}, 1000);
-            $(this).hide();
-            $('#paremale').show();
+    <script>
+        $(document).ready(function () {
+            leheStart();
+
+            // 2.Vasaku nupu vajutamine
+            $('#vasakule').click(function () {
+                $('#Osa2, #Osa2 h2').animate({left: '0px'}, 1000);
+                $(this).hide();
+                $('#paremale').show();
+            });
+
+            // 3Paremale nupu vajutamine
+            $('#paremale').click(function () {
+                $('#Osa2, #Osa2 h2').animate({left: '200px'}, 1000);
+                $(this).hide();
+                $('#vasakule').show();
+            });
+
+            // 4. UUS EFEKT slideToggle – peidab ja näitab lisainfot sujuvalt
+            $('#uusNupp').click(function() {
+                $('#lisainfoKast').slideToggle(600);
+            });
         });
-        //paremale nuppu vajutamine
-        $('#paremale').click(function () {
-            $('#osa2, h2').animate({left: '200px'}, 1000);
-            $(this).hide();
-            $('#vasakule').show();
-        });
-    });
+
+        function tekstSiniseks() {
+            $('#Osa1').css('color', 'blue');
+        }
+
+        function tekstMustaks() {
+            $('#Osa1').css('color', 'black');
+        }
+
+        function leheStart() {
+            $('#Osa1').mouseenter(tekstSiniseks);
+            $('#Osa1').mouseleave(tekstMustaks);
+
+            //(draggable)
+            $('#erapilt').draggable();
+            $('#erapilt').bind("drag", koordLugemine);
+        }
+
+        //Koordinaatide lugemine
+        function koordLugemine(event, ui){
+            let koht = ui.offset;
+            $('#koordinadid').html('x: ' + Math.round(koht.left) + ' || y: ' + Math.round(koht.top));
+        }
     </script>
 </head>
 
@@ -40,57 +68,78 @@
 <header>
     <!--päis-->
     <h1>
-        Liliia  veebirakenduste aluste tööd
+        Liliia veebirakenduste aluste tööd
     </h1>
 </header>
 
-
-<!-- naigeegimis menüü-->
+<!-- navigeerimismenüü -->
 <nav>
     <ul>
-    <li>
-        <a href = "index.html">  Avaleht</a>
-    </li>
-    <li>
-        <a href = "kontakt.html">Konteakt</a>
-    <li>
-        <a href = "tehtud.html">Tehtud tööd </a>
-    </li>
-    <li>
-        <a href = "lingid.html"> Kasulikud lingid</a>
-    </li>
-    <li>
-        <a href="meedia.html">Meedia</a>
-    </li>
+        <li>
+            <a href="index.html">Avaleht</a>
+        </li>
+        <li>
+            <a href="kontakt.html">Kontakt</a>
+        </li>
+        <li>
+            <a href="tehtud.html">Tehtud tööd</a>
+        </li>
+        <li>
+            <a href="lingid.html">Kasulikud lingid</a>
+        </li>
+        <li>
+            <a href="meedia.html">Meedia</a>
+        </li>
     </ul>
 </nav>
 
 <!--sisu-->
 <main>
-    <section id ="Osa1">
-    <h2>Tere tulemast!</h2>
+    <section id="Osa1">
+        <h2>Tere tulemast!</h2>
         <p>See on veebirakenduse tunnis käsitsi kirjutatud leht</p>
         <br>
-        <br>
-        <p>Palun kasuta navigeerimismenüü, et leida info!</p>
-    </section >
-    <section id = "Osa2" >
+        <p>Palun kasuta navigeerimismenüüd, et leida info!</p>
+    </section>
+
+    <section id="juhend">
+        <h2>Kasutusjuhend ja uus jQuery efekt</h2>
+        <p>
+            <strong>Kuidas lehe elemente kasutada:</strong><br>
+            - Vii hiir tervitusteksti peale, et muuta see siniseks.<br>
+            - Vajuta nuppudele <strong>paremale / vasakule</strong>, et liigutada Päevapilti ja selle pealkirja.<br>
+            - Lohista pilti hiirega, et näha selle reaalajas koordinaate ekraanil.<br>
+            - Uue efekti nägemiseks vajuta allolevale nupule (avab ja peidab teksti sujuva libisemisega).
+        </p>
+        <input type="button" value="Näita / Peida lisainfot" id="uusNupp">
+
+        <div id="lisainfoKast">
+            See on uus jQuery efekt <strong>slideToggle()</strong>! Seda polnud tunnis varem kasutatud.
+        </div>
+    </section>
+
+
+    <section id="Osa2">
         <h2>Päevapilt</h2>
         <div>Ise tehtud pilt
-            <img src="Lill.png" alt="see on kollane päike" id = "erapilt">
+            <br>
+            <img src="Lill.png" alt="see on kollane päike" id="erapilt">
         </div>
-    </section >
+        <div id="koordinadid">Lohista pilti koordinaatide nägemiseks</div>
+    </section>
+
     <section>
         <input type="button" value="paremale" id="paremale">
-        <input type="button" value="vasakule" id="vasakule">
+        <input type="button" value="vasakule" id="vasakule" style="display:none;">
+        <input type="button" value="peida pilti" onclick="$('#erapilt').hide(1500)">
+        <input type="button" value="kuva pilti" onclick="$('#erapilt').show(1500)">
     </section>
 </main>
-
 
 <!---jalus-->
 <footer>
     <div>
-        Õpilane leht
+        Õpilase leht
     </div>
 </footer>
 

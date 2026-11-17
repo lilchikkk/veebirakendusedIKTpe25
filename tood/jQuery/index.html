@@ -12,16 +12,6 @@
             integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI="
             crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function () {
-
-        function tekstPunaseks() {
-            $('#tekstikast').css('color', 'red');
-        }
-
-        function tekstMustaks() {
-            $('#tekstikast').css('color', 'black');
-        }
-
         function leheStart() {
             $('#tekstikast').mouseenter(tekstPunaseks);
             $('#tekstikast').mouseleave(tekstMustaks);
@@ -30,10 +20,22 @@
             $('#pilt').draggable();
             $('#pilt').bind("drag", koordLugemine);
         }
+        function tekstPunaseks() {
+            $('#tekstikast').css('color', 'red');
+        }
+
+        function tekstMustaks() {
+            $('#tekstikast').css('color', 'black');
+        }
+
         function koordLugemine(event, ui){
             let koht=ui.offset;
             $('#koordinadid').html('x:'+ koht.left+ ' || y:'+ koht.top);
         }
+
+        $(document).ready(function () {
+        $('#vasakule').hide();
+
         //paremale nuppu vajutamine
         $('#paremale').click(function () {
             $('#tekstikast, h2').animate({left: '200px'}, 1000);
