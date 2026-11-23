@@ -1,10 +1,12 @@
+
 <!DOCTYPE html> <!--deklaratsioon et kasutame html5-->
 <!-- komentaar -->
 <html lang="et">
 <head> <!-- tehniline info-->
     <meta charset="UTF-8">
-    <title>Liliia  veebirakenduste aluste tööd</title>
-    <link rel = "stylesheet"  href = "style.css"/>
+    <title>Liliia veebirakenduste aluste tööd</title>
+    <link rel = "stylesheet" href = "style.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -12,27 +14,34 @@
 <header>
     <!--päis-->
     <h1>
-        Liliia  veebirakenduste aluste tööd
+        Liliia veebirakenduste aluste tööd
     </h1>
 </header>
-
 
 <!-- naigeegimis menüü-->
 <nav>
     <ul>
         <li>
-            <a href = "index.html">  Avaleht</a>
+            <a href="index.html" data-tooltip="See on minu veebilehe avaleht.">Avaleht</a>
         </li>
         <li>
-            <a href = "kontakt.html">Konteakt</a>
-        <li>
-            <a href = "tehtud.html">Tehtud tööd </a>
+            <a href="kontakt.html" data-tooltip="Siit leiad minu kontaktandmed.">Kontakt</a>
+        </li>
+        <li class="dropdown">
+            <a href="tehtud.html" data-tooltip="Siin saad vaadata minu tehtud töid.">Tehtud tööd</a>
+            <ul class="submenu">
+                <li><a href="tood/tabelid.html">Tabelid</a></li>
+                <li><a href="tood/vormid/muusikakusitlus.html">Muusika küsitlus</a></li>
+                <li><a href="tood/vormid/kalk.html">Kalkulaator</a></li>
+                <li><a href="tood/vormid/kuupaev.html">Kuupäev ja kellaaeg</a></li>
+                <li><a href="tood/jQuery/index.html">jQuery</a></li>
+            </ul>
         </li>
         <li>
-            <a href = "lingid.html"> Kasulikud lingid</a>
+            <a href="lingid.html" data-tooltip="Siit leiad kasulikud lingid ja õppematerjalid.">Kasulikud lingid</a>
         </li>
         <li>
-            <a href="kujundus2/tehtud.html">Tehtud tööd (uus versioon)</a>
+            <a href="kujundus2/tehtud.html" data-tooltip="Siin on minu veebilehe uuem kujundus.">Tehtud tööd (uus versioon)</a>
         </li>
         <li>
             <a href="tood/paberitoo.html">Tehtud tööd (uus versioon)</a>
@@ -46,15 +55,13 @@
         <li>
             <a href="tood/vormid/kalk.html">Kalkulaator</a>
         </li>
-
     </ul>
 </nav>
 
-
 <!--sisu-->
 <main>
-    <section id ="Osa4">
-        <h2>Tunnis tehtud töd</h2>
+    <section id="Osa4">
+        <h2>Tunnis tehtud tööd</h2>
         <div>
             <a href="https://liliadotmelnyk.wordpress.com/" target="_blank">1.kursuse WP leht</a>
             <br>
@@ -62,11 +69,11 @@
             <br>
             <a href="tood/tabelid.html">Tabelid</a>
             <br>
-            <a href="tood/vormid/ankeet.html" > Ankeet on tehtud </a>
+            <a href="tood/vormid/ankeet.html">Ankeet on tehtud</a>
             <br>
-            <a href="tood/maparea/maja.html" > MapArea </a>
+            <a href="tood/maparea/maja.html">MapArea</a>
             <br>
-            <a href="tood/pildid/piltideVahetus.html" > Ankeet on tehtud </a>
+            <a href="tood/pildid/piltideVahetus.html">Ankeet on tehtud</a>
             <br>
             <a href="tood/vormid/muusikakusitlus.html">Muusika küsitlus</a>
             <br>
@@ -83,15 +90,14 @@
             <a href="tood/canvas/joonistamine.html">Smail joonis</a>
             <br>
             <a href="tood/jQuery/index.html">jQuery</a>
-
         </div>
-    </section >
+    </section>
 </main>
 
 <!--GITHUB-->
 <section>
-    <h2>WebStorm GitHub'iga sidumine </h2>
-    git clone...repo https link
+    <h2>WebStorm GitHub'iga sidumine</h2>
+    git clone...repo hesp link
     <br>
     <strong>Kasutame terminal, ja kirjutame järgmised käsud:</strong>
     <br>
@@ -111,5 +117,46 @@
     </div>
 </footer>
 
+<script>
+    $(document).ready(function () {
+
+        $('.dropdown').hover(
+            function () {
+                $(this).children('.submenu').stop(true, true).slideDown(300);
+            },
+            function () {
+                $(this).children('.submenu').stop(true, true).slideUp(300);
+            }
+        );
+
+        // Tooltip ehk vihjemull
+        $('nav a[data-tooltip]').hover(
+            function () {
+                let tekst = $(this).attr('data-tooltip');
+
+                let vihjemull = $('<div class="vihjemull"></div>')
+                    .text(tekst)
+                    .appendTo('body');
+
+                let koht = $(this).offset();
+
+                vihjemull.css({
+                    top: koht.top + $(this).outerHeight() + 10,
+                    left: koht.left
+                });
+
+                vihjemull.fadeIn(300);
+
+                $(this).data('vihjemull', vihjemull);
+            },
+            function () {
+                $(this).data('vihjemull').fadeOut(200, function () {
+                    $(this).remove();
+                });
+            }
+        );
+
+    });
+</script>
 </body>
 </html>
