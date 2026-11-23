@@ -58,6 +58,14 @@
     </ul>
 </nav>
 
+<!-- Breadcrumb-->
+<div class="breadcrumb">
+    <ul>
+        <li><a href="index.html">Avaleht</a></li>
+        <li>Tehtud tööd</li>
+    </ul>
+</div>
+
 <!--sisu-->
 <main>
     <section id="Osa4">
@@ -120,6 +128,10 @@
 <script>
     $(document).ready(function () {
 
+        //Breadcrumb
+        $('.breadcrumb li:last-child').addClass('active');
+
+        //Dropdown menüü
         $('.dropdown').hover(
             function () {
                 $(this).children('.submenu').stop(true, true).slideDown(300);
@@ -129,32 +141,29 @@
             }
         );
 
-        // Tooltip ehk vihjemull
-        $('nav a[data-tooltip]').hover(
-            function () {
-                let tekst = $(this).attr('data-tooltip');
+        //vihjemull
+        $('nav a[data-tooltip]').mouseover(function (e) {
+            let tekst = $(this).attr('data-tooltip');
 
-                let vihjemull = $('<div class="vihjemull"></div>')
-                    .text(tekst)
-                    .appendTo('body');
+            $('body').append("<div id='tooltip'>" + tekst + "</div>");
 
-                let koht = $(this).offset();
+            $('#tooltip')
+                .css('top', (e.pageY + 15) + 'px')
+                .css('left', (e.pageX + 15) + 'px')
+                .fadeIn(300);
+        });
 
-                vihjemull.css({
-                    top: koht.top + $(this).outerHeight() + 10,
-                    left: koht.left
-                });
+        $('nav a[data-tooltip]').mousemove(function (e) {
+            $('#tooltip')
+                .css('top', (e.pageY + 15) + 'px')
+                .css('left', (e.pageX + 15) + 'px');
+        });
 
-                vihjemull.fadeIn(300);
-
-                $(this).data('vihjemull', vihjemull);
-            },
-            function () {
-                $(this).data('vihjemull').fadeOut(200, function () {
-                    $(this).remove();
-                });
-            }
-        );
+        $('nav a[data-tooltip]').mouseout(function () {
+            $('#tooltip').fadeOut(300, function () {
+                $(this).remove();
+            });
+        });
 
     });
 </script>

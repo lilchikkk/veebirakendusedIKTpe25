@@ -1,3 +1,4 @@
+
 <!DOCTYPE html> <!--deklaratsioon et kasutame html5-->
 <!-- komentaar -->
 <html lang="et">
@@ -6,13 +7,11 @@
     <title>Liliia veebirakenduste aluste tööd</title>
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-            crossorigin="anonymous"></script>
+    <!-- JQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"
-            integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI="
-            crossorigin="anonymous"></script>
+    <!-- JQuery UI -->
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -31,7 +30,7 @@
                 $('#vasakule').show();
             });
 
-            // 4. UUS EFEKT slideToggle – peidab ja näitab lisainfot sujuvalt
+            // 4. UUS EFEKT slideToggle – peidab ja näitab lisainfo
             $('#uusNupp').click(function() {
                 $('#lisainfoKast').slideToggle(600);
             });
@@ -41,22 +40,24 @@
             var yOffset = 20;
 
             $('[title]').hover(function(e) {
-                this.t = this.title;
-                this.title = "";
-                $("body").append("<p id='tooltip'>" + this.t + "</p>");
-                $("#tooltip")
-                    .css("top", (e.pageY - yOffset) + "px")
-                    .css("left", (e.pageX + xOffset) + "px")
-                    .fadeIn("fast");
+                var tekst = $(this).attr('title');
+
+                $(this).attr('title', '');
+
+                $('body').append("<p id='tooltip'>" + tekst + "</p>");
+
+                $('#tooltip')
+                    .css('top', (e.pageY - yOffset) + 'px')
+                    .css('left', (e.pageX + xOffset) + 'px')
+                    .fadeIn('fast');
             }, function() {
-                this.title = this.t;
-                $("#tooltip").remove();
+                $('#tooltip').remove();
             });
 
             $('[title]').mousemove(function(e) {
-                $("#tooltip")
-                    .css("top", (e.pageY - yOffset) + "px")
-                    .css("left", (e.pageX + xOffset) + "px");
+                $('#tooltip')
+                    .css('top', (e.pageY - yOffset) + 'px')
+                    .css('left', (e.pageX + xOffset) + 'px');
             });
         });
 
@@ -103,7 +104,9 @@
                 <li>
                     <a href="tehtud.html" title="Vaata seni tehtud töid ja projekte">Tehtud tööd</a>
                     <ul>
-                        <li><a href="tood/vormid/muusikakusitlus.html" title="Ava muusikaküsitluse ankeet">Muusikaküsitlus</a></li>
+                        <li>
+                            <a href="tood/vormid/muusikakusitlus.html" title="Ava muusikaküsitluse ankeet">Muusikaküsitlus</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
