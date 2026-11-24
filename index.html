@@ -1,8 +1,9 @@
-
-<!DOCTYPE html> <!--deklaratsioon et kasutame html5-->
-<!-- komentaar -->
+<!DOCTYPE html>
+<!--deklaratsioon et kasutame html5-->
+<!-- kommentaar -->
 <html lang="et">
-<head> <!-- tehniline info-->
+<head>
+    <!-- tehniline info-->
     <meta charset="UTF-8">
     <title>Liliia veebirakenduste aluste tööd</title>
     <link rel="stylesheet" href="style.css">
@@ -35,29 +36,31 @@
                 $('#lisainfoKast').slideToggle(600);
             });
 
-            // OSA 4: jQuery vihje- ehk spikrimullide (Tooltip) loogika
-            var xOffset = 10;
-            var yOffset = 20;
-
-            $('[title]').hover(function(e) {
-                var tekst = $(this).attr('title');
+            // OSA 4: jQuery vihje- ehk spikrimullid (Tooltip)
+            $('.vihjemull').mouseover(function(e) {
+                var mull = $(this).attr('title');
 
                 $(this).attr('title', '');
 
-                $('body').append("<p id='tooltip'>" + tekst + "</p>");
+                $('body').append('<div id="vihje">' + mull + '</div>');
 
-                $('#tooltip')
-                    .css('top', (e.pageY - yOffset) + 'px')
-                    .css('left', (e.pageX + xOffset) + 'px')
-                    .fadeIn('fast');
-            }, function() {
-                $('#tooltip').remove();
-            });
+                $('#vihje').fadeIn(500);
+                $('#vihje').fadeTo(10, 0.9);
 
-            $('[title]').mousemove(function(e) {
-                $('#tooltip')
-                    .css('top', (e.pageY - yOffset) + 'px')
-                    .css('left', (e.pageX + xOffset) + 'px');
+            }).mousemove(function(e) {
+
+                $('#vihje').css('top', e.pageY + 10);
+                $('#vihje').css('left', e.pageX + 20);
+
+            }).mouseout(function() {
+
+                var mull = $('#vihje').html();
+
+                $(this).attr('title', mull);
+
+                $('#vihje').fadeOut(200, function() {
+                    $(this).remove();
+                });
             });
         });
 
@@ -99,26 +102,31 @@
 <nav>
     <ul>
         <li>
-            <a href="index.html" title="Tagasi pealehele">Avaleht</a>
-            <ul>
-                <li>
-                    <a href="tehtud.html" title="Vaata seni tehtud töid ja projekte">Tehtud tööd</a>
-                    <ul>
-                        <li>
-                            <a href="tood/vormid/muusikakusitlus.html" title="Ava muusikaküsitluse ankeet">Muusikaküsitlus</a>
-                        </li>
-                    </ul>
-                </li>
+            <a href="index.html" class="vihjemull" title="Tagasi pealehele">Avaleht</a>
+        </li>
+
+        <li class="dropdown">
+            <a href="tehtud.html" class="vihjemull" title="Vaata seni tehtud töid ja projekte">Tehtud tööd</a>
+            <ul class="submenu">
+                <li><a href="https://liliadotmelnyk.wordpress.com/" class="vihjemull" title="Minu esimese kursuse WordPressi veebileht" target="_blank">1.kursuse WP leht</a></li>
+                <li><a href="tood/tabelid.html" class="vihjemull" title="Vaata minu tehtud tabeleid">Tabelid</a></li>
+                <li><a href="tood/maparea/maja.html" class="vihjemull" title="Vaata pildi MapArea ülesannet">MapArea</a></li>
+                <li><a href="tood/vormid/muusikakusitlus.html" class="vihjemull" title="Ava muusika küsitluse vorm">Muusika küsitlus</a></li>
+                <li><a href="tood/vormid/kalk.html" class="vihjemull" title="Ava kalkulaatorite ülesanne">Kalkulaatorid</a></li>
+                <li><a href="tood/jQuery/index.html" class="vihjemull" title="Vaata jQuery ülesannet">jQuery</a></li>
             </ul>
         </li>
+
         <li>
-            <a href="kontakt.html" title="Võta meiega ühendust küsimuste korral">Kontakt</a>
+            <a href="kontakt.html" class="vihjemull" title="Võta meiega ühendust küsimuste korral">Kontakt</a>
         </li>
+
         <li>
-            <a href="lingid.html" title="Kasulikud õppematerjalid ja viited">Kasulikud lingid</a>
+            <a href="lingid.html" class="vihjemull" title="Kasulikud õppematerjalid ja viited">Kasulikud lingid</a>
         </li>
+
         <li>
-            <a href="meedia.html" title="Meediafailid ja pildid">Meedia</a>
+            <a href="meedia.html" class="vihjemull" title="Meediafailid ja pildid">Meedia</a>
         </li>
     </ul>
 </nav>
@@ -141,8 +149,9 @@
             - Lohista pilti hiirega, et näha selle reaalajas koordinaate ekraanil<br>
             - Uue efekti nägemiseks vajuta allolevale nupule (avab ja peidab teksti sujuva libisemisega)
         </p>
+
         <!--vihjemull -->
-        <input type="button" value="Näita / Peida lisainfot" id="uusNupp" title="Klõpsa lisainfo kuvamiseks või peitmiseks">
+        <input type="button" class="vihjemull" value="Näita / Peida lisainfot" id="uusNupp" title="Klõpsa lisainfo kuvamiseks või peitmiseks">
 
         <div id="lisainfoKast">
             See on uus jQuery efekt <strong>slideToggle()</strong>! Seda polnud tunnis varem kasutatud.
@@ -154,17 +163,17 @@
         <div>Ise tehtud pilt
             <br>
             <!-- osa4: -->
-            <img src="Lill.png" alt="see on kollane päike" id="erapilt" title="See on sinu lisatud pilt, mida saab hiirega lohistada!">
+            <img src="Lill.png" alt="see on kollane päike" id="erapilt" class="vihjemull" title="See on sinu lisatud pilt, mida saab hiirega lohistada!">
         </div>
         <div id="koordinadid">Lohista pilti koordinaatide nägemiseks</div>
     </section>
 
     <section>
         <!--osa4(vihjemullid) -->
-        <input type="button" value="paremale" id="paremale" title="Klõpsa pildi liigutamiseks paremale">
-        <input type="button" value="vasakule" id="vasakule" style="display:none;" title="Klõpsa pildi tagasi liigutamiseks">
-        <input type="button" value="peida pilti" onclick="$('#erapilt').hide(1500)" title="Peida pilt aeglase efekti abil">
-        <input type="button" value="kuva pilti" onclick="$('#erapilt').show(1500)" title="Kuva peidetud pilt tagasi lehele">
+        <input type="button" class="vihjemull" value="paremale" id="paremale" title="Klõpsa pildi liigutamiseks paremale">
+        <input type="button" class="vihjemull" value="vasakule" id="vasakule" style="display:none;" title="Klõpsa pildi tagasi liigutamiseks">
+        <input type="button" class="vihjemull" value="peida pilti" onclick="$('#erapilt').hide(1500)" title="Peida pilt aeglase efekti abil">
+        <input type="button" class="vihjemull" value="kuva pilti" onclick="$('#erapilt').show(1500)" title="Kuva peidetud pilt tagasi lehele">
     </section>
 </main>
 
